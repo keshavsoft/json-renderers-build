@@ -1,5 +1,5 @@
 // import render from "../../src/index.js";
-import render from "../../docs/dist/v2/min.js";
+import render from "../../docs/dist/v3/min.js";
 
 // import "https://cdn.jsdelivr.net/gh/keshavsoft/json-renderers@main/docs/dist/v12/min.js";
 
@@ -15,8 +15,7 @@ const start = () => {
 
     const createControl = render({
       type: "table",
-      data,
-      targetHtmlId: "dom-render-container"
+      data, columns: ["Name"]
     });
     console.log("createControl : ", createControl);
 
