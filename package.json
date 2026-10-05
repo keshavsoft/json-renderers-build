@@ -1,0 +1,34 @@
+{
+  "name": "json-renderers-build",
+  "version": "1.2.1",
+  "description": "Standalone, config-driven Table renderer built on top of json-to-dom",
+  "type": "module",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "docs",
+    "README.md"
+  ],
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [
+    "json-to-dom",
+    "table",
+    "renderer",
+    "aggregates",
+    "totals"
+  ],
+  "author": "KeshavSoft",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.4.2"
+  },
+  "dependencies": {
+    "json-to-spec": "^32.1.2"
+  }
+}
