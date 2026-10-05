@@ -11,7 +11,6 @@ const RENDERER_MAP = {
 const render = ({
     type = "table",
     data,
-    inData,
     columns
 } = {}) => {
     const rawType = type;
@@ -25,8 +24,8 @@ const render = ({
         return null;
     }
 
-    const localData = inData ?? data;
-    const localColumns = inColumns ?? columns;
+    const localData = data;
+    const localColumns = columns;
 
     // Default to table renderer
     return renderer({
