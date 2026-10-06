@@ -16,8 +16,7 @@ const render = ({
     columns
 } = {}) => {
     const rawType = type;
-    const resolvedType = typeof rawType === "string" ? rawType.toLowerCase() : "table";
-    const renderer = RENDERER_MAP[resolvedType];
+    const renderer = RENDERER_MAP[rawType];
 
     if (!renderer) {
         console.error(

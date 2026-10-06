@@ -51,7 +51,7 @@ const d = {
           return n(o, a);
       });
   }
-}, p = (t, e) => {
+}, $ = (t, e) => {
   if ("operation" in t) {
     if (t.operation === "loopArray")
       return h(t, e);
@@ -71,21 +71,21 @@ const d = {
     return (e == null ? void 0 : e[l]) ?? "";
   }
   return t;
-}, $ = (t, e) => {
+}, j = (t, e) => {
   let r = {};
   for (const [l, a] of Object.entries(t)) {
     const o = f(a, e);
     r[l] = o;
   }
   return r;
-}, j = (t, e) => {
+}, p = (t, e) => {
   if ("tagName" in t) {
     if ("textContent" in t) {
       const r = f(t.textContent, e);
       t.textContent = r;
     }
     if ("attributes" in t) {
-      const r = $(t.attributes, e);
+      const r = j(t.attributes, e);
       t.attributes = r;
     }
   }
@@ -93,8 +93,8 @@ const d = {
   if (!t || typeof t != "object" || Array.isArray(t)) return null;
   const r = structuredClone(t);
   if (!r) return null;
-  if ("tagName" in r && j(r, e), "jsonToSpec" in r) {
-    const l = r == null ? void 0 : r.jsonToSpec, a = p(l, e);
+  if ("tagName" in r && p(r, e), "jsonToSpec" in r) {
+    const l = r == null ? void 0 : r.jsonToSpec, a = $(l, e);
     Array.isArray(a) ? r.children = a : r.children = [a], delete r.jsonToSpec;
   }
   if (Array.isArray(r == null ? void 0 : r.children)) {
@@ -102,11 +102,7 @@ const d = {
     r.children = l;
   }
   return r;
-}, n = (t, e) => {
-  if (t == null) return null;
-  debugger;
-  return typeof Node < "u" && t instanceof Node ? t : Array.isArray(t) ? i(t, e) : typeof t == "object" ? N(t, e) : typeof t == "string" || typeof t == "number" ? document.createTextNode(String(t)) : t;
-}, u = (t, e) => n(t, e);
+}, n = (t, e) => t == null ? null : typeof Node < "u" && t instanceof Node ? t : Array.isArray(t) ? i(t, e) : typeof t == "object" ? N(t, e) : typeof t == "string" || typeof t == "number" ? document.createTextNode(String(t)) : t, u = (t, e) => n(t, e);
 b({
   inFuncDefinition: u
 });
@@ -182,11 +178,11 @@ const D = {
   attributes: k,
   jsonToSpec: F,
   children: R
-}, w = ({
+}, E = ({
   inData: t
 } = {}) => u(x, {
   arrayOfStrings: t ?? []
-}), E = {
+}), w = {
   operation: "loopArray",
   source: "arrayOfStrings",
   template: {
@@ -197,7 +193,7 @@ const D = {
     textContent: "${}"
   }
 }, M = [], B = {
-  jsonToSpec: E,
+  jsonToSpec: w,
   children: M
 }, G = ({
   inData: t
@@ -205,22 +201,22 @@ const D = {
   arrayOfStrings: t ?? []
 }), c = {
   table: O,
-  select: w,
+  select: E,
   selectOptionsOnly: G
-}, L = ({
+}, z = ({
   type: t = "table",
   data: e,
   columns: r
 } = {}) => {
-  const l = t, a = typeof l == "string" ? l.toLowerCase() : "table", o = c[a];
-  return o ? o({
+  const l = t, a = c[l];
+  return a ? a({
     inColumns: r,
     inData: e
   }) : (console.error(
     `[Renderer] Unknown renderer type "${l}". Available types: ${Object.keys(c).join(", ")}`
   ), null);
 };
-m(L);
+m(z);
 export {
-  L as default
+  z as default
 };
