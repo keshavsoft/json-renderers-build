@@ -7,18 +7,18 @@ const d = {
     meta: d,
     renderToDom: t
   }));
-}, b = {
+}, y = {
   version: "v32",
   description: "JSON-to-DOM engine with centralized traversal and responsibility-focused construction"
-}, y = ({ inFuncDefinition: t } = {}) => {
+}, b = ({ inFuncDefinition: t } = {}) => {
   if (typeof globalThis > "u" || !t) return;
   globalThis.ks ?? (globalThis.ks = {});
   const e = {
-    meta: b,
+    meta: y,
     buildSpecElement: t
   };
   globalThis.ks.jsonToSpec = e;
-}, g = (t, e) => n(t, e), c = (t, e) => Array.isArray(t) ? t.map((r) => g(r, e)).flat(1 / 0).filter(Boolean) : [], h = (t, e) => {
+}, g = (t, e) => n(t, e), i = (t, e) => Array.isArray(t) ? t.map((r) => g(r, e)).flat(1 / 0).filter(Boolean) : [], h = (t, e) => {
   if ("source" in t && (t == null ? void 0 : t.source) in e) {
     const r = e[t == null ? void 0 : t.source];
     if (Array.isArray(r))
@@ -28,20 +28,20 @@ const d = {
           return n(o, a);
       });
   }
-}, v = (t, e) => {
+}, A = (t, e) => {
   let r = [];
   for (const [l, a] of Object.entries(e)) {
     const o = t == null ? void 0 : t.template;
     if (o) {
-      const u = n(o, {
+      const s = n(o, {
         key: l,
         value: a
       });
-      r.push(u);
+      r.push(s);
     }
   }
   return r;
-}, A = (t, e) => {
+}, v = (t, e) => {
   if ("source" in t && (t == null ? void 0 : t.source) in e) {
     const r = e[t == null ? void 0 : t.source];
     if (Array.isArray(r))
@@ -51,14 +51,14 @@ const d = {
           return n(o, a);
       });
   }
-}, j = (t, e) => {
+}, p = (t, e) => {
   if ("operation" in t) {
     if (t.operation === "loopArray")
       return h(t, e);
     if (t.operation === "loopObject")
-      return v(t, e);
-    if (t.operation === "loopCollection")
       return A(t, e);
+    if (t.operation === "loopCollection")
+      return v(t, e);
   }
 }, f = (t, e) => {
   if (typeof e == "string") return e;
@@ -78,7 +78,7 @@ const d = {
     r[l] = o;
   }
   return r;
-}, N = (t, e) => {
+}, j = (t, e) => {
   if ("tagName" in t) {
     if ("textContent" in t) {
       const r = f(t.textContent, e);
@@ -89,28 +89,28 @@ const d = {
       t.attributes = r;
     }
   }
-}, p = (t, e) => {
+}, N = (t, e) => {
   if (!t || typeof t != "object" || Array.isArray(t)) return null;
   const r = structuredClone(t);
   if (!r) return null;
-  if ("tagName" in r && N(r, e), "jsonToSpec" in r) {
-    const l = r == null ? void 0 : r.jsonToSpec, a = j(l, e);
+  if ("tagName" in r && j(r, e), "jsonToSpec" in r) {
+    const l = r == null ? void 0 : r.jsonToSpec, a = p(l, e);
     Array.isArray(a) ? r.children = a : r.children = [a], delete r.jsonToSpec;
   }
   if (Array.isArray(r == null ? void 0 : r.children)) {
-    const l = c(r == null ? void 0 : r.children, e);
+    const l = i(r == null ? void 0 : r.children, e);
     r.children = l;
   }
   return r;
 }, n = (t, e) => {
   if (t == null) return null;
   debugger;
-  return typeof Node < "u" && t instanceof Node ? t : Array.isArray(t) ? c(t, e) : typeof t == "object" ? p(t, e) : typeof t == "string" || typeof t == "number" ? document.createTextNode(String(t)) : t;
-}, s = (t, e) => n(t, e);
-y({
-  inFuncDefinition: s
+  return typeof Node < "u" && t instanceof Node ? t : Array.isArray(t) ? i(t, e) : typeof t == "object" ? N(t, e) : typeof t == "string" || typeof t == "number" ? document.createTextNode(String(t)) : t;
+}, u = (t, e) => n(t, e);
+b({
+  inFuncDefinition: u
 });
-const C = {
+const D = {
   default: {
     tagName: "table",
     attributes: {
@@ -156,16 +156,16 @@ const C = {
       }
     ]
   }
-}, D = ({
+}, O = ({
   inColumns: t,
   inData: e
 } = {}) => {
   const r = e ?? [], l = t;
-  return s(C.default, {
+  return u(D.default, {
     columns: l,
     data: r
   });
-}, k = "select", O = {
+}, C = "select", k = {
   id: "LedgerName"
 }, F = {
   operation: "loopArray",
@@ -177,32 +177,50 @@ const C = {
     },
     textContent: "${}"
   }
-}, R = [], w = {
-  tagName: k,
-  attributes: O,
+}, R = [], x = {
+  tagName: C,
+  attributes: k,
   jsonToSpec: F,
   children: R
-}, x = ({
+}, w = ({
   inData: t
-} = {}) => s(w, {
+} = {}) => u(x, {
   arrayOfStrings: t ?? []
-}), i = {
-  table: D,
-  select: x
-}, E = ({
+}), E = {
+  operation: "loopArray",
+  source: "arrayOfStrings",
+  template: {
+    tagName: "option",
+    attributes: {
+      value: "${}"
+    },
+    textContent: "${}"
+  }
+}, M = [], B = {
+  jsonToSpec: E,
+  children: M
+}, G = ({
+  inData: t
+} = {}) => u(B, {
+  arrayOfStrings: t ?? []
+}), c = {
+  table: O,
+  select: w,
+  selectOptionsOnly: G
+}, L = ({
   type: t = "table",
   data: e,
   columns: r
 } = {}) => {
-  const l = t, a = typeof l == "string" ? l.toLowerCase() : "table", o = i[a];
+  const l = t, a = typeof l == "string" ? l.toLowerCase() : "table", o = c[a];
   return o ? o({
     inColumns: r,
     inData: e
   }) : (console.error(
-    `[Renderer] Unknown renderer type "${l}". Available types: ${Object.keys(i).join(", ")}`
+    `[Renderer] Unknown renderer type "${l}". Available types: ${Object.keys(c).join(", ")}`
   ), null);
 };
-m(E);
+m(L);
 export {
-  E as default
+  L as default
 };
