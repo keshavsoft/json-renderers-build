@@ -6,7 +6,8 @@ import renderSelectOptionsOnly from "./selectOptionsOnly/index.js";
 
 const RENDERER_MAP = {
     table: renderTable,
-    select: renderSelect
+    select: renderSelect,
+    selectOptionsOnly: renderSelectOptionsOnly
 };
 
 const render = ({
