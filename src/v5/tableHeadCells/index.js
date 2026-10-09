@@ -8,12 +8,12 @@ const startFunc = ({
 } = {}) => {
     const localData = inData ?? [];
 
-    let specAsJsonToDom = jsonTransform({
+    let thAsArray = jsonTransform({
         children: localData
     }, skeletonJson);
     // console.log("specAsJsonToDom: ", specAsJsonToDom);
 
-    return specAsJsonToDom?.children;
+    return thAsArray?.children;
 };
 
 export default startFunc;
