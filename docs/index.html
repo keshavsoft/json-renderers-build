@@ -111,8 +111,8 @@
         Build Declarative UI Specifications <br class="hidden sm:inline" />
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400">Headless, Pure, and Config-Driven</span>
       </h2>
-      <p class="max-w-3xl mx-auto text-slate-400 text-sm sm:text-base leading-relaxed">
-        <strong class="text-slate-200">json-renderers-build</strong> transforms raw data arrays and column definitions into comprehensive DOM specification ASTs (<code class="text-indigo-300 font-mono">specAsJsonToDom</code>). It decouples UI structure generation from DOM rendering, letting downstream runtimes like <code class="text-indigo-300 font-mono">json-renderers</code> handle the DOM mounting.
+      <p class="max-w-4xl mx-auto text-slate-400 text-sm sm:text-base leading-relaxed">
+        <strong class="text-slate-200">json-renderers-build</strong> transforms raw data arrays and column definitions into a pure DOM specification AST (<code class="text-indigo-300 font-mono">specAsJsonToDom</code>). This repo does not live in the browser DOM layer. It is the headless spec generator, while the actual DOM creation is handled by <code class="text-emerald-300 font-mono">@keshavsoft/json-to-tag</code> and the runtime mount step is performed by <code class="text-indigo-300 font-mono">json-renderers</code>.
       </p>
 
       <div class="flex flex-wrap items-center justify-center gap-3 pt-2">

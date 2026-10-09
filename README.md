@@ -11,12 +11,15 @@
 
 ## The Story of `json-renderers-build`
 
-In the **KeshavSoft Declarative UI Ecosystem**, rendering is split cleanly into two distinct, decoupled responsibilities:
+In the **KeshavSoft Declarative UI Ecosystem**, rendering is split into a few clear responsibilities:
 
-1. **Specification Compilation (THIS REPO — `json-renderers-build`)**  
-   Transforms raw data, field arrays, and UI blueprints (`skeleton.json`) into an abstract, deterministic DOM Specification tree (`specAsJsonToDom`).
-2. **DOM Instantiation & Mounting (Downstream — `json-renderers` / `@keshavsoft/json-to-tag`)**  
+1. **Data shaping (upstream, optional):** `@keshavsoft/json-transformer` or similar logic prepares business JSON into a stable shape.
+2. **Specification Compilation (THIS REPO — `json-renderers-build`)**  
+   Transforms data, field arrays, and UI blueprints (`skeleton.json`) into an abstract, deterministic DOM specification tree (`specAsJsonToDom`).
+3. **DOM Instantiation & Mounting (Downstream — `@keshavsoft/json-to-tag` + `json-renderers`)**  
    Consumes that compiled specification tree and constructs real browser DOM nodes (`HTMLElement`), mounting them into target HTML containers.
+
+This repo does not create live browser DOM by itself. Its output is a headless JSON spec, not a rendered page. The actual DOM hook happens in `@keshavsoft/json-to-tag`, and the runtime layer simply mounts the resulting browser nodes.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -47,6 +50,7 @@ In the **KeshavSoft Declarative UI Ecosystem**, rendering is split cleanly into 
 - **Pure Functional Pipeline:** Given the same data and columns, it returns the exact same specification AST every time. No DOM dependencies or mock DOMs (`jsdom`) required for unit testing.
 - **Blueprint Separation:** Component skeletons (`skeleton.json`) and transformation rules can evolve independently from DOM lifecycle and styling concerns.
 - **Core Engine for `json-renderers`:** Downstream library `json-renderers` relies on `json-renderers-build` to generate its AST before mounting.
+- **Important boundary:** This repo prepares the UI description; the actual DOM creation still happens in `@keshavsoft/json-to-tag`, while `json-renderers` performs the mounting step into the browser container.
 
 ---
 
