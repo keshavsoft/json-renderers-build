@@ -60,7 +60,7 @@ const E = {
     if (t.operation === "loopCollection")
       return k(t, r);
   }
-}, h = (t, r) => {
+}, A = (t, r) => {
   if (typeof r == "string") return r;
   if (typeof t != "string") return t;
   if (t === "${value}")
@@ -74,14 +74,14 @@ const E = {
 }, w = (t, r) => {
   let e = {};
   for (const [n, o] of Object.entries(t)) {
-    const c = h(o, r);
+    const c = A(o, r);
     e[n] = c;
   }
   return e;
 }, V = (t, r) => {
   if ("tagName" in t) {
     if ("textContent" in t) {
-      const e = h(t.textContent, r);
+      const e = A(t.textContent, r);
       t.textContent = e;
     }
     if ("attributes" in t) {
@@ -102,9 +102,9 @@ const E = {
     e.children = n;
   }
   return e;
-}, f = (t, r) => t == null ? null : typeof Node < "u" && t instanceof Node ? t : Array.isArray(t) ? b(t, r) : typeof t == "object" ? I(t, r) : typeof t == "string" || typeof t == "number" ? document.createTextNode(String(t)) : t, A = (t, r) => f(t, r);
+}, f = (t, r) => t == null ? null : typeof Node < "u" && t instanceof Node ? t : Array.isArray(t) ? b(t, r) : typeof t == "object" ? I(t, r) : typeof t == "string" || typeof t == "number" ? document.createTextNode(String(t)) : t, $ = (t, r) => f(t, r);
 F({
-  inFuncDefinition: A
+  inFuncDefinition: $
 });
 const K = {
   default: {
@@ -157,11 +157,11 @@ const K = {
   inData: r
 } = {}) => {
   const e = r ?? [], n = t;
-  return A(K.default, {
+  return $(K.default, {
     columns: n,
     data: e
   });
-}, $ = ({ inItems: t, inRecipe: r, inExecute: e }) => {
+}, h = ({ inItems: t, inRecipe: r, inExecute: e }) => {
   const n = t, o = r, c = e;
   return n.map((l) => y({
     inSource: l,
@@ -176,7 +176,7 @@ const K = {
     inRecipe: o
   }));
   for (const [a, u] of Object.entries(l))
-    Array.isArray(u) && o && a in o && (l[a] = $({
+    Array.isArray(u) && o && a in o && (l[a] = h({
       inItems: u,
       inRecipe: o[a],
       inExecute: c
@@ -184,7 +184,7 @@ const K = {
   return l;
 }, y = ({ inSource: t, inRecipe: r, inExecute: e }) => {
   const n = t, o = r, c = e;
-  return Array.isArray(n) ? $({
+  return Array.isArray(n) ? h({
     inItems: n,
     inRecipe: o,
     inExecute: c
@@ -288,7 +288,7 @@ const _ = ({ inSource: t, inOperation: r, inExecute: e }) => {
   let e = g({
     inData: t ?? []
   });
-  return d.children = e, d;
+  return d.children = e == null ? void 0 : e.children, d;
 }, p = {
   table: B,
   select: T,

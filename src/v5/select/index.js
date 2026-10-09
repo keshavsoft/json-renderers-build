@@ -12,7 +12,7 @@ const startFunc = ({
         inData: localData
     });
     // console.log("specAsJsonToDom: ", specAsJsonToDom);
-    skeletonJson.children = localChildren;
+    skeletonJson.children = localChildren?.children;
 
     return skeletonJson;
 };
