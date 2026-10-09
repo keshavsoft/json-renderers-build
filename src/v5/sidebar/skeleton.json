@@ -1,0 +1,40 @@
+{
+    "default": {
+        "tagName": "ul",
+        "attributes": {
+            "class": "nav flex-column"
+        },
+        "jsonToSpec": {
+            "operation": "loopCollection",
+            "source": "data",
+            "template": {
+                "tagName": "li",
+                "attributes": {
+                    "class": "nav-item"
+                },
+                "children": [
+                    {
+                        "tagName": "a",
+                        "attributes": {
+                            "class": "${class}",
+                            "href": "${href}"
+                        },
+                        "children": [
+                            {
+                                "tagName": "i",
+                                "attributes": {
+                                    "class": "${icon}"
+                                }
+                            },
+                            {
+                                "tagName": "span",
+                                "textContent": "${name}"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "children": []
+    }
+}
