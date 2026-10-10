@@ -2,6 +2,8 @@ import tagJson from "./tag.json" with { type: "json" };
 import renderTableHead from "./head/index.js";
 import renderTableBody from "./body/index.js";
 import renderTableFooter from "../footer/index.js";
+import jsonTransformer from "@keshavsoft/json-transformer";
+import spec from "./spec.json" with { type: "json" };
 
 const renderTable = ({
     inColumns = [],
@@ -9,13 +11,21 @@ const renderTable = ({
     inFooter = []
 } = {}) => {
     const table = structuredClone(tagJson);
+    const columns = inColumns.map(element => {
+        return {
+            columnName: element
+        };
+    });
 
-    const header = renderTableHead({ inColumns });
-    const body = renderTableBody({ inColumns, inData });
+    const tableFromSpec = jsonTransformer({ columns, rows: inData }, spec);
+    // console.log("tableFromSpec : ", tableFromSpec);
+
+    // const header = renderTableHead({ inColumns });
+    // const body = renderTableBody({ inColumns, inData });
     // console.log("header : ", header);
 
-    table.children[0].children = [header];
-    table.children[1] = body;
+    table.children[0].children = [tableFromSpec?.columns];
+    table.children[1] = tableFromSpec?.rows;
 
     return table;
 };

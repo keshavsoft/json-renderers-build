@@ -6,14 +6,14 @@ const start = () => {
     const createControl = render({
       type: "tableFromSpec",
       columns: ["itemName", "baseUnit"],
-      data
+      data: data.slice(0, 3)
     });
 
     // console.log("createControl : ", JSON.stringify(createControl, null, 2));
 
     console.log("head : ", createControl.children[0]);
 
-    // console.log("body : ", createControl.children[1]);
+    console.log("body : ", createControl.children[1]);
 
 
   } catch (err) {

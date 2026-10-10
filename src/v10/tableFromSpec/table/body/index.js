@@ -10,7 +10,7 @@ const renderTableBody = ({ inColumns = [], inData } = {}) => {
 
     const row = jsonTransformer({ columns, rows: inData }, spec);
 
-    return row;
+    return row.rows;
 };
 
 export default renderTableBody;
