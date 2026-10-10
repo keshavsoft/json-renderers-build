@@ -10,24 +10,8 @@ const renderTable = ({
 } = {}) => {
     const table = structuredClone(tagJson);
 
-    const children = [
-        renderTableHead({ inColumns, inTagJson: table }),
-        // renderTableBody({ inData, inColumns })
-    ];
-
-    if (!Array.isArray(inFooter)) {
-        throw new TypeError("The footer property must be an array of footer names.");
-    }
-
-    if (inFooter.length > 0) {
-        children.push(renderTableFooter({
-            inFooter,
-            inColumns,
-            inData
-        }));
-    }
-
-    table.children = children;
+    renderTableHead({ inColumns, inTagJson: table });
+    renderTableBody({ inColumns, inData, inTagJson: table });
 
     return table;
 };

@@ -1,17 +1,17 @@
-import tagJson from "./tag.json" with { type: "json" };
 import buildBodyRow from "./row/index.js";
+import findKey from "../findKey.js";
 
-const renderTableBody = ({ inData = [], inColumns = [] } = {}) => {
-    const tbody = structuredClone(tagJson);
+const renderTableBody = ({ inData = [], inColumns = [], inTagJson } = {}) => {
+    const bodyRow = findKey(inTagJson, "children[0].children[1].children");
 
     const children = inData.map(row => buildBodyRow({
         inRow: row,
         inColumns
     }));
 
-    tbody.children = children;
+    bodyRow.children = children;
 
-    return tbody;
+    return inTagJson;
 };
 
 export default renderTableBody;
