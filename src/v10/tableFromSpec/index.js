@@ -4,23 +4,18 @@ import applyOptions from "./options/index.js";
 import renderRequests from "./render-requests.json" with { type: "json" };
 
 const render = ({
-    type = "table",
     inData,
     inColumns,
     footer = [],
     options = {}
 } = {}) => {
-    if (type === "table") {
-        const spec = renderTable({
-            inColumns,
-            inData,
-            inFooter: footer
-        });
-
-        return applyOptions(spec, options);
-    };
-
-    throw new Error(`Unknown table renderer type "${type}".`);
+    const spec = renderTable({
+        inColumns,
+        inData,
+        inFooter: footer
+    });
+    // console.log("kkkkkkkk : ", options);
+    return applyOptions(spec, options);
 };
 
 render.requests = renderRequests;

@@ -14,17 +14,19 @@ const RENDERER_MAP = {
 const render = ({
     type = "table",
     data,
-    columns
+    columns,
+    options
 }) => {
     const rawType = type;
     const renderer = RENDERER_MAP[rawType];
-
+    // console.log("rawType : ", rawType, renderer);
     const localData = data;
     const localColumns = columns;
 
     return renderer({
         inColumns: localColumns,
-        inData: localData
+        inData: localData,
+        options
     });
 };
 
