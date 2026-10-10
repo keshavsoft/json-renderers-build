@@ -11,7 +11,9 @@ const renderTable = ({
     const table = structuredClone(tagJson);
 
     renderTableHead({ inColumns, inTagJson: table });
-    // renderTableBody({ inColumns, inData, inTagJson: table });
+    const body = renderTableBody({ inColumns, inData });
+
+    table.children[1] = body;
 
     return table;
 };

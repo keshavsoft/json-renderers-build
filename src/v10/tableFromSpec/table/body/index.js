@@ -1,17 +1,16 @@
-import buildBodyRow from "./row/index.js";
-import findKey from "../findKey.js";
+import jsonTransformer from "@keshavsoft/json-transformer";
+import spec from "./spec.json" with { type: "json" };
 
-const renderTableBody = ({ inData = [], inColumns = [], inTagJson } = {}) => {
-    const bodyRow = findKey(inTagJson, "children[1]");
+const renderTableBody = ({ inColumns = [], inData } = {}) => {
+    const columns = inColumns.map(element => {
+        return {
+            columnName: element
+        };
+    });
 
-    const children = inData.map(row => buildBodyRow({
-        inRow: row,
-        inColumns
-    }));
+    const row = jsonTransformer({ columns, rows: inData }, spec);
 
-    bodyRow.children = children;
-
-    return inTagJson;
+    return row;
 };
 
 export default renderTableBody;

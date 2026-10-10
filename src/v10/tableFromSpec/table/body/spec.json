@@ -1,0 +1,16 @@
+{
+    "buildBody": {
+        "rows": {
+            "body": {
+                "tagName": "tbody"
+            },
+            "row": {
+                "tagName": "tr"
+            },
+            "cell": {
+                "tagName": "td",
+                "textContent": "${}"
+            }
+        }
+    }
+}
