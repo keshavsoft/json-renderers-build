@@ -26,6 +26,7 @@
 
   <script type="module">
     import "../../docs/dist/v9/min.js";
+    import "https://keshavsoft.github.io/json-to-tag/dist/v9/min.js";
 
     const container = document.getElementById("dom-render-container");
 
@@ -51,6 +52,8 @@
           }
         });
         console.log("spec : ", spec);
+        window.ks.jsonToTag.buildSpecElement(spec, "dom-render-container");
+        // console.log("spec : ", spec);
       } catch (err) {
         console.error("Render error:", err);
         container.innerHTML = `<div class="alert alert-danger font-monospace small mb-0">${err.message}</div>`;
