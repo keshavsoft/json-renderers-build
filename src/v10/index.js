@@ -2,11 +2,13 @@ import registerGlobal from "./registerGlobal.js";
 
 import renderTable from "./table/index.js";
 import renderSelect, { renderSelectOptions } from "./select/index.js";
+import tableFromSpec from "./tableFromSpec/index.js";
 
 const RENDERER_MAP = {
     table: renderTable,
     select: renderSelect,
-    selectOptionsOnly: renderSelectOptions
+    selectOptionsOnly: renderSelectOptions,
+    tableFromSpec
 };
 
 const render = ({
