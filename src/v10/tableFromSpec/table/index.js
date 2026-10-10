@@ -10,9 +10,11 @@ const renderTable = ({
 } = {}) => {
     const table = structuredClone(tagJson);
 
-    renderTableHead({ inColumns, inTagJson: table });
+    const header = renderTableHead({ inColumns });
     const body = renderTableBody({ inColumns, inData });
+    // console.log("header : ", header);
 
+    table.children[0].children = [header];
     table.children[1] = body;
 
     return table;

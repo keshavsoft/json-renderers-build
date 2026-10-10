@@ -1,10 +1,7 @@
 import jsonTransformer from "@keshavsoft/json-transformer";
-import findKey from "../findKey.js";
 import spec from "./spec.json" with { type: "json" };
 
-const renderTableHead = ({ inColumns = [], inTagJson } = {}) => {
-    const headRow = findKey(inTagJson, "children[0].children[0]");
-
+const renderTableHead = ({ inColumns = [] } = {}) => {
     const input = inColumns.map(element => {
         return {
             columnName: element
@@ -13,7 +10,7 @@ const renderTableHead = ({ inColumns = [], inTagJson } = {}) => {
 
     const row = jsonTransformer({ Rows: input }, spec);
 
-    headRow.children = row?.Rows;
+    return row?.Rows;
 };
 
 export default renderTableHead;
