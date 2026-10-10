@@ -7,15 +7,19 @@ const render = ({
     inData,
     inColumns,
     footer = [],
-    options = {}
+    options
 } = {}) => {
     const spec = renderTable({
         inColumns,
         inData,
         inFooter: footer
     });
-    // console.log("kkkkkkkk : ", options);
-    return applyOptions(spec, options);
+
+    if (options) {
+        return applyOptions(spec, options);
+    };
+
+    return spec;
 };
 
 render.requests = renderRequests;

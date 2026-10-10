@@ -1,5 +1,6 @@
 const applyShowSerial = (inSpec) => {
     const [thead, tbody] = inSpec.children;
+    console.log("aaaaaaa--", thead.children[0]);
 
     // prepend <th>#</th> to head row
     thead.children[0].children.unshift({

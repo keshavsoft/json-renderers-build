@@ -41,7 +41,7 @@
     "vite": "^5.4.2"
   },
   "dependencies": {
-    "@keshavsoft/json-transformer": "^1.14.0",
+    "@keshavsoft/json-transformer": "^1.15.2",
     "json-to-spec": "^32.1.3"
   }
 }

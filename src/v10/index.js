@@ -23,11 +23,13 @@ const render = ({
     const localData = data;
     const localColumns = columns;
 
-    return renderer({
+    const createdRenderer = renderer({
         inColumns: localColumns,
         inData: localData,
         options
     });
+
+    return createdRenderer;
 };
 
 registerGlobal(render);
