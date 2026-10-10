@@ -1,6 +1,4 @@
 import tagJson from "./tag.json" with { type: "json" };
-import renderTableHead from "./head/index.js";
-import renderTableBody from "./body/index.js";
 import renderTableFooter from "../footer/index.js";
 import jsonTransformer from "@keshavsoft/json-transformer";
 import spec from "./spec.json" with { type: "json" };
@@ -30,5 +28,4 @@ const renderTable = ({
     return table;
 };
 
-export { renderTableHead, renderTableBody };
 export default renderTable;
