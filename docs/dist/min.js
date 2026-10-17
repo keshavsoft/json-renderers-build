@@ -70,11 +70,11 @@ const U = {
   return r && r in w ? w[r] : { ...w };
 };
 Object.assign(V, w);
-const j = ({ inConfig: s, config: r } = {}) => {
-  const e = s ?? r;
-  if (!e || typeof e != "object" || Array.isArray(e))
+const j = (s) => {
+  const r = s;
+  if (!r || typeof r != "object" || Array.isArray(r))
     throw new TypeError("Config must be an object");
-  return Y({ inConfig: e }), Z({ inConfig: e }), O({ inConfig: e }), tt({ inConfig: e }), et({ inConfig: e }), rt({ inConfig: e }), st({ inConfig: e }), !0;
+  return Y({ inConfig: r }), Z({ inConfig: r }), O({ inConfig: r }), tt({ inConfig: r }), et({ inConfig: r }), rt({ inConfig: r }), st({ inConfig: r }), !0;
 };
 j.getSpec = V;
 j.configSpec = w;
@@ -849,7 +849,7 @@ const Ae = ({
   inputRow: S,
   form: Ae
 }, $e = (s = {}) => {
-  const r = j(s), e = r == null ? void 0 : r.showLog, t = r.type;
+  const r = j({ inConfig: s }), e = r == null ? void 0 : r.showLog, t = r.type;
   let o = t, n = t;
   if (t.includes(".")) {
     const a = t.split(".");
