@@ -1,5 +1,4 @@
 import registerGlobal from "./register/index.js";
-import { getSpec, guardFunc, cleanSpec, sampleSpec as spec } from "./guard/index.js";
 
 import renderTable from "./table/index.js";
 import renderSelect from "./select/index.js";
@@ -22,55 +21,44 @@ const RENDERER_MAP = {
 };
 
 // Main build renderer: Public API accepting clean single options object (no targetHtmlId)
-const render = ({
-    type = cleanSpec.type,
-    data = cleanSpec.data,
-    columns = cleanSpec.columns,
-    options = cleanSpec.options,
-    showLog = cleanSpec.showLog
-} = {}) => {
-    const localType = type;
-    const localData = data;
-    const localColumns = columns;
-    const localOptions = options;
-    const localShowLog = showLog;
+const render = (options = {}) => {
+    const config = validateConfig(options);
+    const showLog = config?.showLog;
 
-    const config = {
-        type: localType,
-        data: localData,
-        columns: localColumns,
-        options: localOptions,
-        showLog: localShowLog
+    const localType = config.type;
+    let localMainType = localType;
+    let localSubType = localType;
+
+    if (localType.includes(".")) {
+        const localArray = localType.split(".");
+        localMainType = localArray[0];
+        localSubType = localArray[1];
     };
 
-    // 1. Validate configuration
-    guardFunc({ inConfig: config });
-
     // 2. Select the renderer
-    const renderer = RENDERER_MAP[config.type];
+    const renderer = RENDERER_MAP[localMainType];
     if (!renderer) {
-        throw new Error(`Renderer for type "${config.type}" not found.`);
+        throw new Error(`Renderer for type "${localMainType}" not found.`);
     }
 
     // 3. Build and return the component spec
     const createdRenderer = renderer({
+        inType: localSubType,
         inColumns: config.columns,
         inData: config.data,
         inOptions: config.options,
         options: config.options
     });
 
-    if (config.showLog) console.log("json-renderers-build output:", createdRenderer);
+    if (showLog) console.log("json-renderers-build output:", createdRenderer);
 
     return createdRenderer;
 };
 
-registerGlobal({ render, getSpec, spec });
+registerGlobal(render);
 
 export {
-    render,
-    getSpec,
-    spec
+    render
 };
 
 export default render;

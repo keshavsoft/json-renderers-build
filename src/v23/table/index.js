@@ -3,6 +3,7 @@ import { simple } from "json-renderers-build-table";
 const render = ({
     inData,
     inColumns,
+    inType,
     footer = [],
     options
 } = {}) => {
