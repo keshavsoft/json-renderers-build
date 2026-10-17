@@ -6,55 +6,55 @@ const U = {
     meta: U,
     render: s
   });
-}, Y = ({ inConfig: s, inValue: r } = {}) => {
-  const e = s, t = e ? e.type : r;
-  if (t === void 0)
+}, Y = (s) => {
+  const e = s.type;
+  if (e === void 0)
     throw new Error('Missing compulsory key: "type"');
-  if (typeof t != "string")
+  if (typeof e != "string")
     throw new TypeError("type must be a string");
   return !0;
-}, Z = ({ inConfig: s, inValue: r } = {}) => {
-  const e = s, t = e ? e.targetHtmlId : r;
-  if (t === void 0)
+}, Z = (s) => {
+  const e = s.targetHtmlId;
+  if (e === void 0)
     throw new Error('Missing compulsory key: "targetHtmlId"');
-  if (typeof t != "string")
+  if (typeof e != "string")
     throw new TypeError("targetHtmlId must be a string");
-  if (t.trim().length === 0)
+  if (e.trim().length === 0)
     throw new Error("targetHtmlId must be a non-empty string");
   return !0;
-}, O = ({ inConfig: s, inValue: r } = {}) => {
-  const e = s, t = e ? e.data : r;
-  if (t === void 0)
+}, O = (s) => {
+  const e = s.data;
+  if (e === void 0)
     throw new Error('Missing compulsory key: "data"');
-  if (!Array.isArray(t))
+  if (!Array.isArray(e))
     throw new TypeError("data must be an Array");
   return !0;
-}, tt = ({ inConfig: s, inValue: r } = {}) => {
-  const e = s, t = e ? e.columns : r;
-  if (t === void 0)
+}, tt = (s) => {
+  const e = s.columns;
+  if (e === void 0)
     throw new Error('Missing compulsory key: "columns"');
-  if (!Array.isArray(t))
+  if (!Array.isArray(e))
     throw new TypeError("columns must be an Array");
   return !0;
-}, et = ({ inConfig: s, inValue: r } = {}) => {
-  const e = s, t = e ? e.classToApply : r;
-  if (t === void 0)
+}, et = (s) => {
+  const e = s.classToApply;
+  if (e === void 0)
     throw new Error('Missing compulsory key: "classToApply"');
-  if (typeof t != "string")
+  if (typeof e != "string")
     throw new TypeError("classToApply must be a string");
   return !0;
-}, rt = ({ inConfig: s, inValue: r } = {}) => {
-  const e = s, t = e ? e.appendPosition : r;
-  if (t === void 0)
+}, rt = (s) => {
+  const e = s.appendPosition;
+  if (e === void 0)
     throw new Error('Missing compulsory key: "appendPosition"');
-  if (typeof t != "string")
+  if (typeof e != "string")
     throw new TypeError("appendPosition must be a string");
   return !0;
-}, st = ({ inConfig: s, inValue: r } = {}) => {
-  const e = s, t = e ? e.showLog : r;
-  if (t === void 0)
+}, st = (s) => {
+  const e = s.showLog;
+  if (e === void 0)
     throw new Error('Missing compulsory key: "showLog"');
-  if (typeof t != "boolean")
+  if (typeof e != "boolean")
     throw new TypeError("showLog must be a boolean");
   return !0;
 }, nt = "table", at = "", ot = [], it = [], ct = "", lt = "replace", ut = !1, w = {
@@ -74,7 +74,7 @@ const j = (s) => {
   const r = s;
   if (!r || typeof r != "object" || Array.isArray(r))
     throw new TypeError("Config must be an object");
-  return Y({ inConfig: r }), Z({ inConfig: r }), O({ inConfig: r }), tt({ inConfig: r }), et({ inConfig: r }), rt({ inConfig: r }), st({ inConfig: r }), !0;
+  return Y(r), Z(r), O(r), tt(r), et(r), rt(r), st(r), !0;
 };
 j.getSpec = V;
 j.configSpec = w;

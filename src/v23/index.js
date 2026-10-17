@@ -23,7 +23,7 @@ const RENDERER_MAP = {
 
 // Main build renderer: Public API accepting clean single options object (no targetHtmlId)
 const render = (options = {}) => {
-    const config = guardFunc({ inConfig: options });
+    const config = guardFunc(options);
     const showLog = config?.showLog;
 
     const localType = config.type;
