@@ -1,5 +1,5 @@
 import registerGlobal from "./register/index.js";
-import guardFunc from "json-renderers-guard";
+import { guardSpec } from "json-renderers-guard";
 
 import renderTable from "./table/index.js";
 import renderSelect from "./select/index.js";
@@ -23,7 +23,7 @@ const RENDERER_MAP = {
 
 // Main build renderer: Public API accepting clean single options object (no targetHtmlId)
 const render = (options = {}) => {
-    const config = guardFunc(options);
+    const config = guardSpec(options);
     const showLog = config?.showLog;
 
     const localType = config.type;
