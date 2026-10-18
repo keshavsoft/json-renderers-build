@@ -1,4 +1,4 @@
-import "../../docs/dist/v18/min.js";
+import "../../docs/dist/v23/min.js";
 import "https://keshavsoft.github.io/json-to-tag/dist/v9/min.js";
 import data from "./batches.json" with { type: "json" };
 
@@ -14,7 +14,7 @@ import { cellButtonClick } from "./methods/cellButtonClick.js";
 
 const start = async () => {
     try {
-        const spec = window.ks.jsonRenderersBuild.renderToDom({
+        const spec = window.ks.jsonRenderersBuild.render({
             type: "table",
             columns: [{
                 columnName: "itemName", width: "300px", template: {

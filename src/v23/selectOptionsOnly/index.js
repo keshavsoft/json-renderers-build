@@ -1,21 +1,34 @@
 import { fromCollection } from "json-transformer-funcs";
 import spec from "../spec.json" with { type: "json" };
 
-const renderSelectOptions = ({ inData = [], inColumns = [] } = {}) => {
-    const arrayOfCollections = inColumns.map(element => {
-        const template = structuredClone(spec.buildOption);
+const normalizeInputs = ({ inData = [], inColumns = [] } = {}) => ({
+    data: inData,
+    columns: inColumns,
+});
 
-        template.textContent = template.textContent.replace("rowValue", element.columnName);
-        template.attributes.value = template.attributes.value.replace("rowValue", element.columnName);
+const buildOptionForColumn = (columnConfig, optionTemplate = spec.buildOption) => {
+    const template = structuredClone(optionTemplate);
+    const columnName = columnConfig?.columnName;
 
-        const createdArray = fromCollection(inData, template);
+    template.textContent = template.textContent.replace("rowValue", columnName);
+    template.attributes.value = template.attributes.value.replace("rowValue", columnName);
 
-        console.log("createdArray : ", createdArray[0], template);
+    return template;
+};
 
-        return createdArray;
-    });
+const makeOptionsForColumn = (data, columnConfig) => {
+    const optionTemplate = buildOptionForColumn(columnConfig, spec.buildOption);
 
-    return arrayOfCollections;
+    return fromCollection(data, optionTemplate);
+};
+
+const buildOptionsForColumns = ({ data, columns }) =>
+    columns.map((columnConfig) => makeOptionsForColumn(data, columnConfig));
+
+const renderSelectOptions = (options = {}) => {
+    const { data, columns } = normalizeInputs(options);
+
+    return buildOptionsForColumns({ data, columns });
 };
 
 export default renderSelectOptions;
