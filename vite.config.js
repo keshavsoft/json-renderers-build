@@ -23,13 +23,19 @@ export default defineConfig({
             closeBundle() {
                 try {
                     const targetDir = resolve(__dirname, "docs/dist");
+                    const sourceFile = resolve(__dirname, "docs/dist", latestSrcVersion, "min.js");
+                    const destinationFile = resolve(targetDir, "min.js");
+
                     if (!existsSync(targetDir)) {
                         mkdirSync(targetDir, { recursive: true });
                     }
-                    copyFileSync(
-                        resolve(__dirname, "docs/dist", latestSrcVersion, "min.js"),
-                        resolve(targetDir, "min.js")
-                    );
+
+                    if (!existsSync(sourceFile)) {
+                        console.warn(`Skipping copy: bundle not found at ${sourceFile}`);
+                        return;
+                    }
+
+                    copyFileSync(sourceFile, destinationFile);
                 } catch (e) {
                     console.warn("Could not copy latest to docs/dist/min.js", e);
                 }

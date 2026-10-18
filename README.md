@@ -24,6 +24,20 @@ In the **KeshavSoft Declarative UI Ecosystem**, rendering is split into a few cl
 
 This repo does not create live browser DOM by itself. Its output is a headless JSON spec, not a rendered page. The actual DOM hook happens in `@keshavsoft/json-to-tag`, and the runtime layer simply mounts the resulting browser nodes.
 
+### The Source Story
+
+The public entry point is the root source file:
+
+```js
+// src/index.js
+export * from "./v24/index.js";
+export { default } from "./v24/index.js";
+```
+
+That means the active implementation is `src/v24`, and the root package API always points to that version. Each component type lives in its own folder under `src/v24`, such as `table`, `select`, `selectOptionsOnly`, `dataList`, `form`, and `searchInput`. The logic is intentionally split into small helper files so the entry file stays lean and readable.
+
+This repo keeps older versions in archive and versioned folders for reference, while the current source path stays simple and stable.
+
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │ 1. Raw Business Data & Columns                                         │
@@ -33,7 +47,8 @@ This repo does not create live browser DOM by itself. Its output is a headless J
                                     ▼
 ┌────────────────────────────────────────────────────────────────────────┐
 │ 2. json-renderers-build (THIS REPO)                                    │
-│    • Pre-packaged component skeletons (table, select, selectOptions)   │
+│    • Public API: src/index.js -> src/v24/index.js                     │
+│    • Component folders: table, select, dataList, form, searchInput     │
 │    • Compiles templates via json-to-spec compiler                     │
 │    • 100% HEADLESS: Zero DOM queries, zero document mutations         │
 └───────────────────────────────────┬────────────────────────────────────┘
