@@ -7,7 +7,7 @@ const makeDataListForColumn = (data, columnConfig) => {
 
     const optionForColumn = buildColumnOption(columnName, spec.buildOption);
 
-    constBuiltOptions = fromCollection(data, optionForColumn);
+    const constBuiltOptions = fromCollection(data, optionForColumn);
 
     return constBuiltOptions;
 };
