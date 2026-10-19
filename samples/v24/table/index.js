@@ -1,4 +1,4 @@
-import render from "../../../src/index.js";
+import render from "../../../docs/dist/v24/min.js";
 import "https://keshavsoft.github.io/json-to-tag/dist/v9/min.js";
 
 import data from "./batches.json" with { type: "json" };
