@@ -1,10 +1,10 @@
 import normalizeInputs from "./normalizeInputs.js";
-import buildOptionsForColumns from "./buildOptionsForColumns.js";
+import buildDataListsForColumns from "./buildDataListsForColumns.js";
 
-const renderSelectOptions = (options = {}) => {
+const startFunc = (options = {}) => {
     const { data, columns } = normalizeInputs(options);
 
-    return buildOptionsForColumns({ data, columns });
+    return buildDataListsForColumns({ data, columns });
 };
 
-export default renderSelectOptions;
+export default startFunc;

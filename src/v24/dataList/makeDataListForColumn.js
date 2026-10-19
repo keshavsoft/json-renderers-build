@@ -4,7 +4,11 @@ import buildColumnOption from "./buildColumnOption.js";
 
 const makeDataListForColumn = (data, columnConfig) => {
     const columnName = columnConfig?.columnName;
+
     const dataList = structuredClone(spec.buildDataList);
+    dataList.attributes.id = columnName;
+    dataList.attributes["data-name"] = columnName;
+
     const optionForColumn = buildColumnOption(columnName, spec.buildOption);
 
     dataList.children = fromCollection(data, optionForColumn);
