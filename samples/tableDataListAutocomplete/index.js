@@ -1,18 +1,8 @@
-import render from "../../docs/dist/v24/min.js";
-import "https://keshavsoft.github.io/json-to-tag/dist/v9/min.js";
+import render from "../../docs/dist/v26/min.js";
+import "https://keshavsoft.github.io/json-to-tag/dist/v10/min.js";
 
-const data = [
-  { itemName: "Keyboard", category: "Accessories" },
-  { itemName: "Krishna Mouse", category: "Accessories" },
-  { itemName: "Monitor", category: "Displays" },
-  { itemName: "KeshavSoft Laptop", category: "Computers" },
-  { itemName: "USB Cable", category: "Accessories" }
-];
-
-const columns = [
-  { columnName: "itemName", width: "60%" },
-  { columnName: "category", width: "40%" }
-];
+import columns from "./columns.json" with { type: "json" };
+import data from "./data.json" with { type: "json" };
 
 const start = () => {
   const container = document.getElementById("dom-render-container");
@@ -20,7 +10,41 @@ const start = () => {
 
   try {
     // Build the table specification using the table renderer.
-    const tableSpec = render({ type: "table", columns, data });
+    const tableSpec = render({
+      type: "table.withFooter", columns, data,
+      options: {
+        showSerial: false,
+        showOptions: false
+      },
+      showLog: true
+    });
+    console.log("tableSpec----------- :", tableSpec);
+
+    const table = window.ks.jsonToTag.buildSpecElement(tableSpec);
+    container.replaceChildren(table);
+  } catch (error) {
+    console.error(error);
+    status.className = "alert alert-danger py-2";
+    status.textContent = `Example failed: ${error.message}`;
+  }
+};
+
+const start_original = () => {
+  const container = document.getElementById("dom-render-container");
+  const status = document.getElementById("status");
+
+  try {
+    // Build the table specification using the table renderer.
+    const tableSpec = render({
+      type: "table.withFooter", columns, data,
+      options: {
+        showSerial: false,
+        showOptions: false
+      },
+      showLog: true
+    });
+    console.log("tableSpec :", tableSpec);
+
     const table = window.ks.jsonToTag.buildSpecElement(tableSpec);
     container.replaceChildren(table);
 

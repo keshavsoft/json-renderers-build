@@ -119,23 +119,23 @@ const Nt = (t, a) => {
   ...o,
   rowData: a[o.columnName]
 })), Pt = (t, a, e) => {
-  var s, n, l, r, i, b;
+  var s, n, l, i, r, b;
   if (!Array.isArray(t))
     throw new TypeError("inColumns must be an Array");
   if (t.length === 0)
     throw new Error("inColumns cannot be empty");
   for (let c = 0; c < t.length; c++) {
-    const d = t[c];
-    if (!d || typeof d != "object")
+    const u = t[c];
+    if (!u || typeof u != "object")
       throw new TypeError(`inColumns[${c}] must be an object`);
-    if (typeof d.columnName != "string" || !d.columnName.trim())
+    if (typeof u.columnName != "string" || !u.columnName.trim())
       throw new TypeError(`inColumns[${c}].columnName must be a non-empty string`);
   }
   if (!Array.isArray(a))
     throw new TypeError("inData must be an Array");
   for (let c = 0; c < a.length; c++) {
-    const d = a[c];
-    if (!d || typeof d != "object")
+    const u = a[c];
+    if (!u || typeof u != "object")
       throw new TypeError(`inData[${c}] must be an object`);
   }
   if (!e || typeof e != "object" || Array.isArray(e))
@@ -144,21 +144,21 @@ const Nt = (t, a) => {
   if (!(o in e))
     throw new Error(`Row template "${o}" not found in inSpec`);
   for (let c = 0; c < t.length; c++) {
-    const d = t[c], h = ((i = (r = d.template) == null ? void 0 : r.body) == null ? void 0 : i.cell) || ((b = d.template) == null ? void 0 : b.bodyCell) || "buildBodyCell";
+    const u = t[c], h = ((r = (i = u.template) == null ? void 0 : i.body) == null ? void 0 : r.cell) || ((b = u.template) == null ? void 0 : b.bodyCell) || "buildBodyCell";
     if (!(h in e))
-      throw new Error(`Cell template "${h}" for column "${d.columnName}" not found in inSpec`);
+      throw new Error(`Cell template "${h}" for column "${u.columnName}" not found in inSpec`);
   }
   return !0;
 }, Tt = (t, a) => t.map((o) => {
-  var r, i, b;
-  const s = ((i = (r = o.template) == null ? void 0 : r.body) == null ? void 0 : i.cell) || ((b = o.template) == null ? void 0 : b.bodyCell) || "buildBodyCell", n = a[s];
+  var i, r, b;
+  const s = ((r = (i = o.template) == null ? void 0 : i.body) == null ? void 0 : r.cell) || ((b = o.template) == null ? void 0 : b.bodyCell) || "buildBodyCell", n = a[s];
   return p(o, n);
 }), g = (t, a, e) => {
-  var b, c, d;
+  var b, c, u;
   Pt(t, a, e);
-  const o = t, s = a, n = e, l = ((d = (c = (b = o[0]) == null ? void 0 : b.template) == null ? void 0 : c.body) == null ? void 0 : d.tr) || "buildBodyTr", r = n[l];
+  const o = t, s = a, n = e, l = ((u = (c = (b = o[0]) == null ? void 0 : b.template) == null ? void 0 : c.body) == null ? void 0 : u.tr) || "buildBodyTr", i = n[l];
   return s.map((h) => {
-    const $ = p(h, r), Z = xt(o, h), tt = Tt(Z, n);
+    const $ = p(h, i), Z = xt(o, h), tt = Tt(Z, n);
     return $.children = tt, $;
   });
 }, Ft = {
@@ -254,7 +254,7 @@ const Nt = (t, a) => {
 }, Dt = {
   tagName: "td",
   children: []
-}, u = {
+}, d = {
   buildBodyTr: Ft,
   buildColGroup: Bt,
   buildHeader: It,
@@ -267,9 +267,9 @@ const Nt = (t, a) => {
   buildSelect: Ot,
   buildDataList: Kt,
   emptyCell: Dt
-}, Et = "table", Wt = {
+}, Et = "table", Lt = {
   class: "table table-hover table-striped align-middle border mb-0"
-}, qt = [
+}, Wt = [
   {
     tagName: "colgroup",
     attributes: {
@@ -315,10 +315,10 @@ const Nt = (t, a) => {
       }
     ]
   }
-], Lt = {
+], qt = {
   tagName: Et,
-  attributes: Wt,
-  children: qt
+  attributes: Lt,
+  children: Wt
 }, Vt = [
   {
     narration: "Build the column widths for the table using the configured columns.",
@@ -413,7 +413,7 @@ const Nt = (t, a) => {
   unshiftSerialToRows: _t
 }, Xt = (t, a) => {
   const e = a.dataRole ? C(t[a.fileName], a.dataRole) : t[a.fileName], o = [...a.filePath ?? []], s = o.pop();
-  return { parent: o.reduce((l, r) => l[r], e), key: s };
+  return { parent: o.reduce((l, i) => l[i], e), key: s };
 }, G = (t, a, e) => {
   const { parent: o, key: s } = Xt(t, a);
   (Qt[a.action] || H)(o, s, e);
@@ -447,10 +447,10 @@ const Nt = (t, a) => {
   return n && l;
 }, M = (t, a, e, o, s) => ae(t, o, s) ? ne(t, a, e, o, s) : !1, le = (t, a, e, o, s, n) => {
   if (!M(t, e, o, s, n)) return;
-  const l = o, r = t.templateKey, i = l[r];
-  console.log("templateKey ; ", r), console.log("localSpecKey ; ", i);
-  const b = Ht(a, t.sourcePath), c = e[t.func](b, i);
-  r === "buildFooter" && console.log("result ; ", c), G(a, t.destinationPath, c);
+  const l = s, i = o, r = t.templateKey, b = i[r];
+  l && console.log("singleInstruction ; ", r, b);
+  const c = Ht(a, t.sourcePath), u = e[t.func](c, b);
+  G(a, t.destinationPath, u);
 }, f = (t, a, e, o, s, n) => {
   t.forEach((l) => {
     le(l, a, e, o, s, n);
@@ -552,7 +552,7 @@ const Nt = (t, a) => {
 ], A = { applyTemplate: p }, ue = (t = {}, a = {}, e = !1, o = []) => {
   let s = t, n = a;
   t && typeof t == "object" && "inTableSpec" in t && (s = t.inTableSpec, n = t.inSerial || a);
-  const r = {
+  const i = {
     data: {
       serial: {
         col: { width: "50px" },
@@ -563,11 +563,11 @@ const Nt = (t, a) => {
       }
     },
     base: s,
-    spec: u
+    spec: d
   };
-  f(ie, r, A, u, e, o);
-  const i = C(s, "table-footer-row");
-  return i && Array.isArray(i.children) && i.children.length > 0 && f(ce, r, A, u, e, o), s;
+  f(ie, i, A, d, e, o);
+  const r = C(s, "table-footer-row");
+  return r && Array.isArray(r.children) && r.children.length > 0 && f(ce, i, A, d, e, o), s;
 }, de = [
   {
     narration: "Append the options column width to the table colgroup.",
@@ -653,7 +653,7 @@ const Nt = (t, a) => {
 ], v = { applyTemplate: p }, pe = (t = {}, a = {}, e = !1, o = []) => {
   let s = t, n = a;
   t && typeof t == "object" && "inTableSpec" in t && (s = t.inTableSpec, n = t.inOptions || a);
-  const r = {
+  const i = {
     data: {
       options: {
         col: { width: "100px" },
@@ -664,24 +664,24 @@ const Nt = (t, a) => {
       }
     },
     base: s,
-    spec: u
+    spec: d
   };
-  f(de, r, v, u, e, o);
-  const i = C(s, "table-footer-row");
-  return i && Array.isArray(i.children) && i.children.length > 0 && f(be, r, v, u, e, o), s;
+  f(de, i, v, d, e, o);
+  const r = C(s, "table-footer-row");
+  return r && Array.isArray(r.children) && r.children.length > 0 && f(be, i, v, d, e, o), s;
 }, U = ({ inOptions: t = {}, inBase: a, showLog: e = !1, returnLog: o = [] }) => {
   const s = t, n = a;
   return (s.showSerial || s.serial) && ue(n, s.serial || {}, e, o), (s.showOptions || s.options) && pe(n, s.options || {}, e, o), n;
 }, j = { fromCollection: m, twoDimensional: g }, me = (t = {}, a = !1, e = []) => {
-  const o = t, s = o.columns || [], n = o.data || [], l = o.options, r = structuredClone(Lt), i = {
+  const o = t, s = o.columns || [], n = o.data || [], l = o.options, i = structuredClone(qt), r = {
     data: {
       columns: s,
       data: n
     },
-    base: r,
-    spec: u
+    base: i,
+    spec: d
   };
-  return f(Vt, i, j, u, a, e), k(zt, i, j, u, a, e), U({ inOptions: l, inBase: r }), r;
+  return f(Vt, r, j, d, a, e), k(zt, r, j, d, a, e), U({ inOptions: l, inBase: i }), i;
 }, he = "table", fe = {
   class: "table table-hover table-striped align-middle border mb-0"
 }, ye = [
@@ -771,7 +771,7 @@ const Nt = (t, a) => {
     templateKey: "buildHeader",
     func: "fromCollection"
   }
-], S = { data: {}, base: J, spec: u }, $e = { fromCollection: m }, ge = (t, a = !1, e = []) => (S.data = t, f(Ce, S, $e, u, a, e), J), we = [], _ = {
+], S = { data: {}, base: J, spec: d }, $e = { fromCollection: m }, ge = (t, a = !1, e = []) => (S.data = t, f(Ce, S, $e, d, a, e), J), we = [], _ = {
   children: we
 }, Ne = [
   {
@@ -790,7 +790,7 @@ const Nt = (t, a) => {
     },
     func: "twoDimensional"
   }
-], O = { data: {}, base: _, spec: u }, xe = { twoDimensional: g }, Pe = (t, a = !1, e = []) => (O.data = t, k(Ne, O, xe, u, a, e), _.children), Te = "table", Fe = {
+], O = { data: {}, base: _, spec: d }, xe = { twoDimensional: g }, Pe = (t, a = !1, e = []) => (O.data = t, k(Ne, O, xe, d, a, e), _.children), Te = "table", Fe = {
   class: "table table-hover table-striped align-middle border mb-0"
 }, Be = [
   {
@@ -916,15 +916,15 @@ const Nt = (t, a) => {
     func: "twoDimensional"
   }
 ], K = { fromCollection: m, twoDimensional: g }, Ae = (t = {}, a = !1, e = []) => {
-  const o = t, s = o.inColumns || o.columns || [], n = o.inData || o.data || [], l = o.inOptions || o.options || {}, r = structuredClone(Ie), i = {
+  const o = t, s = o.inColumns || o.columns || [], n = o.inData || o.data || [], l = o.inOptions || o.options || {}, i = structuredClone(Ie), r = {
     data: {
       columns: s,
       data: n
     },
-    base: r,
-    spec: u
+    base: i,
+    spec: d
   };
-  return f(ke, i, K, u, a, e), k(Re, i, K, u, a, e), U({ inOptions: l, inBase: r }), r;
+  return f(ke, r, K, d, a, e), k(Re, r, K, d, a, e), U({ inOptions: l, inBase: i }), i;
 }, ve = [], N = {
   children: ve
 }, je = [
@@ -945,7 +945,7 @@ const Nt = (t, a) => {
     templateKey: "buildFooter",
     func: "fromCollection"
   }
-], D = { data: {}, base: N, spec: u }, Se = { fromCollection: m, twoDimensional: g }, Oe = (t, a = !1, e = []) => (D.data = t, f(je, D, Se, u, a, e), N == null ? void 0 : N.children), Ke = {
+], D = { data: {}, base: N, spec: d }, Se = { fromCollection: m, twoDimensional: g }, Oe = (t, a = !1, e = []) => (D.data = t, f(je, D, Se, d, a, e), N == null ? void 0 : N.children), Ke = {
   simple: me,
   headerOnly: ge,
   bodyOnly: Pe,
@@ -956,14 +956,15 @@ const Nt = (t, a) => {
   inColumns: a,
   inType: e,
   footer: o = [],
-  options: s,
+  inOptions: s,
   inShowLog: n
 } = {}) => {
-  const r = Ke[e];
-  return r({
+  const l = e, i = Ke[l], r = s, b = n;
+  return b && console.log("table : ", l, r), i({
     columns: a,
     data: t,
-    showLog: n
+    options: r,
+    showLog: b
   });
 }, De = ({ inData: t = [], inColumns: a = [] } = {}) => ({
   data: t,
@@ -974,13 +975,13 @@ const Nt = (t, a) => {
   attributes: {
     value: "${rowValue}"
   }
-}, We = {
+}, Le = {
   tagName: "select",
   attributes: {
     id: "LedgerName"
   },
   children: []
-}, qe = {
+}, We = {
   tagName: "datalist",
   attributes: {
     "data-name": "${columnName}"
@@ -988,15 +989,15 @@ const Nt = (t, a) => {
   children: []
 }, y = {
   buildOption: Ee,
-  buildSelect: We,
-  buildDataList: qe
-}, Le = (t, a = y.buildOption) => {
+  buildSelect: Le,
+  buildDataList: We
+}, qe = (t, a = y.buildOption) => {
   const e = structuredClone(a);
   return e.textContent = e.textContent.replace("rowValue", t), e.attributes.value = e.attributes.value.replace("rowValue", t), e;
 }, Ve = (t, a) => {
   const e = a == null ? void 0 : a.columnName, o = structuredClone(y.buildSelect);
   o.attributes.id = e, o.attributes["data-name"] = e;
-  const s = Le(e, y.buildOption);
+  const s = qe(e, y.buildOption);
   return o.children = m(t, s), o;
 }, ze = ({ data: t, columns: a }) => a.map((e) => Ve(t, e)), He = (t = {}) => {
   const { data: a, columns: e } = De(t);
@@ -1024,7 +1025,7 @@ const Nt = (t, a) => {
   o.attributes.id = e, o.attributes["data-name"] = e;
   const s = Xe(e, y.buildOption);
   return o.children = m(t, s), o;
-}, Ze = ({ data: t, columns: a }) => a.map((e) => Ye(t, e)), W = (t = {}) => {
+}, Ze = ({ data: t, columns: a }) => a.map((e) => Ye(t, e)), L = (t = {}) => {
   const { data: a, columns: e } = Qe(t);
   return Ze({ data: a, columns: e });
 }, ta = {
@@ -1230,7 +1231,7 @@ const F = ({ inOptions: t = {}, options: a = {} } = {}) => {
   tagName: ya,
   attributes: Ca,
   children: $a
-}, wa = () => structuredClone(ga), Na = "header-actions", xa = "button", q = {
+}, wa = () => structuredClone(ga), Na = "header-actions", xa = "button", W = {
   destinationRole: Na,
   template: xa
 }, Pa = {
@@ -1244,8 +1245,8 @@ const F = ({ inOptions: t = {}, options: a = {} } = {}) => {
 }, Ta = {
   button: Pa
 }, Fa = (t, a) => {
-  const e = structuredClone(t), o = m(a.header.actions, Ta[q.template]);
-  return C(e, q.destinationRole).children.push(...o), e;
+  const e = structuredClone(t), o = m(a.header.actions, Ta[W.template]);
+  return C(e, W.destinationRole).children.push(...o), e;
 }, Ba = "form-body", Ia = {
   destinationRole: Ba
 }, ka = {
@@ -1506,7 +1507,7 @@ const F = ({ inOptions: t = {}, options: a = {} } = {}) => {
       }
     }
   ]
-}, Wa = {
+}, La = {
   tagName: "div",
   attributes: {
     class: "${inlineCheckboxWrapperClass}"
@@ -1531,7 +1532,7 @@ const F = ({ inOptions: t = {}, options: a = {} } = {}) => {
       }
     }
   ]
-}, qa = {
+}, Wa = {
   buildBodyTr: ka,
   buildBodyCell: Ra,
   buildRequiredField: Aa,
@@ -1542,19 +1543,19 @@ const F = ({ inOptions: t = {}, options: a = {} } = {}) => {
   buildInlineFieldWithButton: Ka,
   buildInlineRequiredFieldWithButton: Da,
   buildInlineTextareaField: Ea,
-  buildInlineCheckboxField: Wa
-}, La = (t, a, e) => {
+  buildInlineCheckboxField: La
+}, qa = (t, a, e) => {
   const o = t.map((l) => {
-    var b, c, d, h, $;
-    const r = ((c = (b = l.template) == null ? void 0 : b.body) == null ? void 0 : c.cell) ?? (l.required ? "buildRequiredField" : "buildBodyCell");
-    let i = ((d = e.fieldTemplates) == null ? void 0 : d[r]) ?? r;
-    return l.buttonText && (i = ((h = e.buttonFieldTemplates) == null ? void 0 : h[i]) ?? i), {
+    var b, c, u, h, $;
+    const i = ((c = (b = l.template) == null ? void 0 : b.body) == null ? void 0 : c.cell) ?? (l.required ? "buildRequiredField" : "buildBodyCell");
+    let r = ((u = e.fieldTemplates) == null ? void 0 : u[i]) ?? i;
+    return l.buttonText && (r = ((h = e.buttonFieldTemplates) == null ? void 0 : h[r]) ?? r), {
       ...l,
       label: l.label ?? l.title ?? l.columnName,
       type: l.type ?? "text",
       placeholder: l.placeholder ?? "",
       buttonType: l.buttonType ?? "button",
-      template: { ...l.template, body: { ...($ = l.template) == null ? void 0 : $.body, cell: i } }
+      template: { ...l.template, body: { ...($ = l.template) == null ? void 0 : $.body, cell: r } }
     };
   }), s = a[0] ?? {}, n = Object.fromEntries(o.map((l) => [
     l.columnName,
@@ -1562,9 +1563,9 @@ const F = ({ inOptions: t = {}, options: a = {} } = {}) => {
   ]));
   return { columns: o, rows: [n] };
 }, Va = (t, a, e) => {
-  const o = La(a.columns, a.records, e.body), s = g(o.columns, o.rows, qa), n = structuredClone(t);
+  const o = qa(a.columns, a.records, e.body), s = g(o.columns, o.rows, Wa), n = structuredClone(t);
   return C(n, Ia.destinationRole).children.push(...Array.isArray(s) ? s : [s]), n;
-}, za = "footer-actions", Ha = "button", L = {
+}, za = "footer-actions", Ha = "button", q = {
   destinationRole: za,
   template: Ha
 }, Ga = {
@@ -1578,8 +1579,8 @@ const F = ({ inOptions: t = {}, options: a = {} } = {}) => {
 }, Ma = {
   button: Ga
 }, Ua = (t, a) => {
-  const e = structuredClone(t), o = m(a.footer.actions, Ma[L.template]);
-  return C(e, L.destinationRole).children.push(...o), e;
+  const e = structuredClone(t), o = m(a.footer.actions, Ma[q.template]);
+  return C(e, q.destinationRole).children.push(...o), e;
 }, Q = ({ inColumns: t, inData: a, inOptions: e, columns: o, data: s, options: n } = {}) => ({
   columns: Array.isArray(t) && t.length > 0 ? t : Array.isArray(o) ? o : [],
   records: Array.isArray(a) && a.length > 0 ? a : Array.isArray(s) ? s : [],
@@ -1814,32 +1815,35 @@ const Io = ({
   tableFromSpec: E,
   select: He,
   selectOptionsOnly: _e,
-  dataList: W,
-  datalist: W,
+  dataList: L,
+  datalist: L,
   searchInput: F,
   search: F,
   inputRow: F,
   form: Io
 }, Ro = (t = {}) => {
   V(t);
-  const a = t == null ? void 0 : t.showLog, e = t.type;
-  let o = e, s = e;
+  const a = t == null ? void 0 : t.showLog;
+  console.log("localShowLog : ", a);
+  const e = t.type, o = t == null ? void 0 : t.options;
+  let s = e, n = e;
   if (e.includes(".")) {
     const r = e.split(".");
-    o = r[0], s = r[1];
+    s = r[0], n = r[1];
   }
-  const n = ko[o];
-  if (!n)
-    throw new Error(`Renderer for type "${o}" not found.`);
-  const l = n({
-    inType: s,
+  a && console.log("localMainType : ", s, n);
+  const l = ko[s];
+  if (!l)
+    throw new Error(`Renderer for type "${s}" not found.`);
+  const i = l({
+    inType: n,
     inColumns: t.columns,
     inData: t.data,
-    inOptions: t.options,
+    inOptions: o,
     options: t.options,
     inShowLog: a
   });
-  return a && console.log("json-renderers-build output:", l), l;
+  return a && console.log("json-renderers-build output:", i), i;
 };
 at(Ro);
 export {
