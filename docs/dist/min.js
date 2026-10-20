@@ -1,167 +1,167 @@
-const at = {
+const et = {
   version: "1.22.0",
   name: "json-renderers-build"
-}, st = (e) => {
-  e && (globalThis.ks ?? (globalThis.ks = {}), globalThis.ks.jsonRenderersBuild = {
-    meta: at,
-    render: e
+}, at = (t) => {
+  t && (globalThis.ks ?? (globalThis.ks = {}), globalThis.ks.jsonRenderersBuild = {
+    meta: et,
+    render: t
   });
-}, ot = (e) => {
-  const a = (e == null ? void 0 : e.inConfig) ?? e;
+}, ot = (t) => {
+  const a = (t == null ? void 0 : t.inConfig) ?? t;
   if (!a || typeof a != "object")
     throw new TypeError("Config must be an object");
-  const t = a.type;
-  if (t === void 0)
+  const e = a.type;
+  if (e === void 0)
     throw new Error('Missing compulsory key: "type"');
-  if (typeof t != "string")
+  if (typeof e != "string")
     throw new TypeError("type must be a string");
   return !0;
-}, nt = (e) => {
-  const a = (e == null ? void 0 : e.inConfig) ?? e;
+}, st = (t) => {
+  const a = (t == null ? void 0 : t.inConfig) ?? t;
   if (!a || typeof a != "object")
     throw new TypeError("Config must be an object");
-  const t = a.data;
-  if (t === void 0)
+  const e = a.data;
+  if (e === void 0)
     throw new Error('Missing compulsory key: "data"');
-  if (!Array.isArray(t))
+  if (!Array.isArray(e))
     throw new TypeError("data must be an Array");
   return !0;
-}, rt = (e) => {
-  const a = (e == null ? void 0 : e.inConfig) ?? e;
+}, nt = (t) => {
+  const a = (t == null ? void 0 : t.inConfig) ?? t;
   if (!a || typeof a != "object")
     throw new TypeError("Config must be an object");
-  const t = a.columns;
-  if (t === void 0)
+  const e = a.columns;
+  if (e === void 0)
     throw new Error('Missing compulsory key: "columns"');
-  if (!Array.isArray(t))
+  if (!Array.isArray(e))
     throw new TypeError("columns must be an Array");
   return !0;
-}, lt = (e) => {
-  const a = (e == null ? void 0 : e.inConfig) ?? e;
+}, lt = (t) => {
+  const a = (t == null ? void 0 : t.inConfig) ?? t;
   if (!a || typeof a != "object")
     throw new TypeError("Config must be an object");
-  const t = a.showLog;
-  if (t !== void 0 && typeof t != "boolean")
+  const e = a.showLog;
+  if (e !== void 0 && typeof e != "boolean")
     throw new TypeError("showLog must be a boolean");
   return !0;
-}, V = (e) => {
-  const a = (e == null ? void 0 : e.inConfig) ?? e;
+}, V = (t) => {
+  const a = (t == null ? void 0 : t.inConfig) ?? t;
   if (!a || typeof a != "object" || Array.isArray(a))
     throw new TypeError("Config must be an object");
-  return ot(a), nt(a), rt(a), lt(a), !0;
-}, it = "table", ct = "", ut = [], dt = [], bt = "", mt = "replace", pt = !1, g = {
-  type: it,
-  targetHtmlId: ct,
-  data: ut,
-  columns: dt,
-  classToApply: bt,
-  appendPosition: mt,
+  return ot(a), st(a), nt(a), lt(a), !0;
+}, rt = "table", it = "", ct = [], ut = [], dt = "", bt = "replace", pt = !1, w = {
+  type: rt,
+  targetHtmlId: it,
+  data: ct,
+  columns: ut,
+  classToApply: dt,
+  appendPosition: bt,
   showLog: pt
-}, ht = (e) => {
-  const a = typeof e == "object" && e !== null ? e.inKey ?? e.key : e;
-  return a && a in g ? g[a] : { ...g };
+}, mt = (t) => {
+  const a = typeof t == "object" && t !== null ? t.inKey ?? t.key : t;
+  return a && a in w ? w[a] : { ...w };
 };
-Object.assign(ht, g);
-const ft = (e) => typeof e == "object" && e !== null && !Array.isArray(e), yt = (e, a) => {
-  if (!ft(e)) return;
-  let t = {};
-  for (const [s, o] of Object.entries(e))
-    t[s] = f(a, o);
-  return t;
-}, $t = (e, a) => {
-  const t = structuredClone(e);
-  return Array.isArray(t) ? t.map((o) => f(a, o)) : void 0;
-}, z = (e, a, t) => {
-  if (e === "${agg:count}" && "rowData" in a) {
+Object.assign(mt, w);
+const ht = (t) => typeof t == "object" && t !== null && !Array.isArray(t), ft = (t, a) => {
+  if (!ht(t)) return;
+  let e = {};
+  for (const [o, s] of Object.entries(t))
+    e[o] = p(a, s);
+  return e;
+}, yt = (t, a) => {
+  const e = structuredClone(t);
+  return Array.isArray(e) ? e.map((s) => p(a, s)) : void 0;
+}, z = (t, a, e) => {
+  if (t === "${agg:count}" && "rowData" in a) {
     if (Array.isArray(a == null ? void 0 : a.rowData))
       return a == null ? void 0 : a.rowData.length;
   } else
-    return e === "${rowValue}" && "rowData" in a ? a == null ? void 0 : a.rowData : e.replace(/\$\{(\w+)\}/g, (s, o) => a[o] !== void 0 ? a[o] : s);
-}, Ct = (e, a) => z(e, a), gt = (e, a, t) => {
-  if (t && console.log("inElement : ", e), t && console.log("inTemplate : ", a), a == null)
+    return t === "${rowValue}" && "rowData" in a ? a == null ? void 0 : a.rowData : t.replace(/\$\{(\w+)\}/g, (o, s) => a[s] !== void 0 ? a[s] : o);
+}, Ct = (t, a) => z(t, a), $t = (t, a, e) => {
+  if (e && console.log("inElement : ", t), e && console.log("inTemplate : ", a), a == null)
     throw new TypeError("inTemplate is required");
   if (typeof a != "object" && typeof a != "string")
     throw new TypeError("inTemplate must be an object or string");
-  if (!e || typeof e != "object" || Array.isArray(e))
+  if (!t || typeof t != "object" || Array.isArray(t))
     throw new TypeError("inElement must be an object");
   return !0;
-}, wt = {
+}, gt = {
   name: "json-transformer-funcs-primitive",
   version: "1.9.0"
-}, Nt = (e) => {
-  var a, t;
-  typeof globalThis > "u" || !e || (globalThis.ks ?? (globalThis.ks = {}), (a = globalThis.ks).applyTemplate ?? (a.applyTemplate = e), (t = globalThis.ks).transformerFuncs ?? (t.transformerFuncs = {}), globalThis.ks.transformerFuncs.primitive = {
-    meta: wt,
-    applyTemplate: e
+}, wt = (t) => {
+  var a, e;
+  typeof globalThis > "u" || !t || (globalThis.ks ?? (globalThis.ks = {}), (a = globalThis.ks).applyTemplate ?? (a.applyTemplate = t), (e = globalThis.ks).transformerFuncs ?? (e.transformerFuncs = {}), globalThis.ks.transformerFuncs.primitive = {
+    meta: gt,
+    applyTemplate: t
   });
-}, f = (e, a, t) => {
-  const s = e, o = a;
-  gt(s, o, t);
-  const n = structuredClone(o);
-  return typeof n == "string" ? z(n, s) : (n === null || typeof n != "object" || ("textContent" in n && (n.textContent = Ct(n == null ? void 0 : n.textContent, s)), "attributes" in n && (n.attributes = yt(n == null ? void 0 : n.attributes, s)), "children" in n && (n.children = $t(n == null ? void 0 : n.children, s))), n);
+}, p = (t, a, e) => {
+  const o = t, s = a;
+  $t(o, s, e);
+  const n = structuredClone(s);
+  return typeof n == "string" ? z(n, o) : (n === null || typeof n != "object" || ("textContent" in n && (n.textContent = Ct(n == null ? void 0 : n.textContent, o)), "attributes" in n && (n.attributes = ft(n == null ? void 0 : n.attributes, o)), "children" in n && (n.children = yt(n == null ? void 0 : n.children, o))), n);
 };
-Nt(f);
-const xt = (e, a) => {
-  if (!Array.isArray(e))
+wt(p);
+const Nt = (t, a) => {
+  if (!Array.isArray(t))
     throw new TypeError("inSource must be an Array");
-  if (e.length === 0)
+  if (t.length === 0)
     throw new Error("inSource cannot be empty");
-  for (let t = 0; t < e.length; t++)
-    if (!e[t] || typeof e[t] != "object")
-      throw new TypeError(`inSource[${t}] must be an object`);
+  for (let e = 0; e < t.length; e++)
+    if (!t[e] || typeof t[e] != "object")
+      throw new TypeError(`inSource[${e}] must be an object`);
   if (!a || typeof a != "object" && typeof a != "string")
     throw new TypeError("inTemplate must be an object or string");
   return !0;
-}, m = (e, a) => {
-  const t = e, s = a;
-  return xt(t, s), t.map((o) => f(o, s));
-}, Ft = (e, a) => e.map((s) => ({
-  ...s,
-  rowData: a[s.columnName]
-})), kt = (e, a, t) => {
-  var o, n, r, i, u, d;
-  if (!Array.isArray(e))
+}, m = (t, a) => {
+  const e = t, o = a;
+  return Nt(e, o), e.map((s) => p(s, o));
+}, xt = (t, a) => t.map((o) => ({
+  ...o,
+  rowData: a[o.columnName]
+})), Pt = (t, a, e) => {
+  var s, n, l, r, i, b;
+  if (!Array.isArray(t))
     throw new TypeError("inColumns must be an Array");
-  if (e.length === 0)
+  if (t.length === 0)
     throw new Error("inColumns cannot be empty");
-  for (let l = 0; l < e.length; l++) {
-    const c = e[l];
-    if (!c || typeof c != "object")
-      throw new TypeError(`inColumns[${l}] must be an object`);
-    if (typeof c.columnName != "string" || !c.columnName.trim())
-      throw new TypeError(`inColumns[${l}].columnName must be a non-empty string`);
+  for (let c = 0; c < t.length; c++) {
+    const d = t[c];
+    if (!d || typeof d != "object")
+      throw new TypeError(`inColumns[${c}] must be an object`);
+    if (typeof d.columnName != "string" || !d.columnName.trim())
+      throw new TypeError(`inColumns[${c}].columnName must be a non-empty string`);
   }
   if (!Array.isArray(a))
     throw new TypeError("inData must be an Array");
-  for (let l = 0; l < a.length; l++) {
-    const c = a[l];
-    if (!c || typeof c != "object")
-      throw new TypeError(`inData[${l}] must be an object`);
+  for (let c = 0; c < a.length; c++) {
+    const d = a[c];
+    if (!d || typeof d != "object")
+      throw new TypeError(`inData[${c}] must be an object`);
   }
-  if (!t || typeof t != "object" || Array.isArray(t))
+  if (!e || typeof e != "object" || Array.isArray(e))
     throw new TypeError("inSpec must be an object");
-  const s = ((r = (n = (o = e[0]) == null ? void 0 : o.template) == null ? void 0 : n.body) == null ? void 0 : r.tr) || "buildBodyTr";
-  if (!(s in t))
-    throw new Error(`Row template "${s}" not found in inSpec`);
-  for (let l = 0; l < e.length; l++) {
-    const c = e[l], p = ((u = (i = c.template) == null ? void 0 : i.body) == null ? void 0 : u.cell) || ((d = c.template) == null ? void 0 : d.bodyCell) || "buildBodyCell";
-    if (!(p in t))
-      throw new Error(`Cell template "${p}" for column "${c.columnName}" not found in inSpec`);
+  const o = ((l = (n = (s = t[0]) == null ? void 0 : s.template) == null ? void 0 : n.body) == null ? void 0 : l.tr) || "buildBodyTr";
+  if (!(o in e))
+    throw new Error(`Row template "${o}" not found in inSpec`);
+  for (let c = 0; c < t.length; c++) {
+    const d = t[c], h = ((i = (r = d.template) == null ? void 0 : r.body) == null ? void 0 : i.cell) || ((b = d.template) == null ? void 0 : b.bodyCell) || "buildBodyCell";
+    if (!(h in e))
+      throw new Error(`Cell template "${h}" for column "${d.columnName}" not found in inSpec`);
   }
   return !0;
-}, Tt = (e, a) => e.map((s) => {
-  var i, u, d;
-  const o = ((u = (i = s.template) == null ? void 0 : i.body) == null ? void 0 : u.cell) || ((d = s.template) == null ? void 0 : d.bodyCell) || "buildBodyCell", n = a[o];
-  return f(s, n);
-}), C = (e, a, t) => {
-  var d, l, c;
-  kt(e, a, t);
-  const s = e, o = a, n = t, r = ((c = (l = (d = s[0]) == null ? void 0 : d.template) == null ? void 0 : l.body) == null ? void 0 : c.tr) || "buildBodyTr", i = n[r];
-  return o.map((p) => {
-    const $ = f(p, i), tt = Ft(s, p), et = Tt(tt, n);
-    return $.children = et, $;
+}, Tt = (t, a) => t.map((o) => {
+  var r, i, b;
+  const s = ((i = (r = o.template) == null ? void 0 : r.body) == null ? void 0 : i.cell) || ((b = o.template) == null ? void 0 : b.bodyCell) || "buildBodyCell", n = a[s];
+  return p(o, n);
+}), g = (t, a, e) => {
+  var b, c, d;
+  Pt(t, a, e);
+  const o = t, s = a, n = e, l = ((d = (c = (b = o[0]) == null ? void 0 : b.template) == null ? void 0 : c.body) == null ? void 0 : d.tr) || "buildBodyTr", r = n[l];
+  return s.map((h) => {
+    const $ = p(h, r), Z = xt(o, h), tt = Tt(Z, n);
+    return $.children = tt, $;
   });
-}, It = {
+}, Ft = {
   tagName: "tr",
   attributes: {
     class: "align-middle"
@@ -172,13 +172,13 @@ const xt = (e, a) => {
   attributes: {
     width: "${width}"
   }
-}, Pt = {
+}, It = {
   tagName: "th",
   textContent: "${columnName}",
   attributes: {
     class: "py-3 px-3 fw-semibold text-uppercase small"
   }
-}, At = {
+}, kt = {
   tagName: "td",
   children: [
     {
@@ -199,13 +199,13 @@ const xt = (e, a) => {
   attributes: {
     class: "py-3 px-3 text-secondary"
   }
-}, vt = {
+}, At = {
   tagName: "button",
   textContent: "${columnName}",
   attributes: {
     class: "btn btn-primary btn-sm"
   }
-}, jt = {
+}, vt = {
   tagName: "td",
   attributes: {
     class: "py-2 px-3 text-center"
@@ -219,38 +219,57 @@ const xt = (e, a) => {
       }
     }
   ]
+}, jt = {
+  tagName: "td",
+  attributes: {
+    class: "py-2 px-3 text-center"
+  },
+  children: [
+    {
+      tagName: "button",
+      textContent: "${columnName}",
+      attributes: {
+        class: "btn btn-primary btn-sm"
+      }
+    }
+  ]
 }, St = {
   tagName: "option",
   textContent: "${rowValue}",
   attributes: {
     value: "${rowValue}"
   }
-}, Et = {
+}, Ot = {
   tagName: "select",
   attributes: {
     id: "LedgerName"
   },
   children: []
-}, Dt = {
+}, Kt = {
   tagName: "datalist",
   attributes: {
     "data-name": "${columnName}"
   },
   children: []
-}, b = {
-  buildBodyTr: It,
+}, Dt = {
+  tagName: "td",
+  children: []
+}, u = {
+  buildBodyTr: Ft,
   buildColGroup: Bt,
-  buildHeader: Pt,
-  buildFooter: At,
+  buildHeader: It,
+  buildFooter: kt,
   buildBodyCell: Rt,
-  button: vt,
-  buttonCell: jt,
+  button: At,
+  buttonCell: vt,
+  optionsButtonCell: jt,
   buildOption: St,
-  buildSelect: Et,
-  buildDataList: Dt
-}, Kt = "table", Ot = {
+  buildSelect: Ot,
+  buildDataList: Kt,
+  emptyCell: Dt
+}, Et = "table", Wt = {
   class: "table table-hover table-striped align-middle border mb-0"
-}, Lt = [
+}, qt = [
   {
     tagName: "colgroup",
     attributes: {
@@ -296,11 +315,11 @@ const xt = (e, a) => {
       }
     ]
   }
-], H = {
-  tagName: Kt,
-  attributes: Ot,
-  children: Lt
-}, Wt = [
+], Lt = {
+  tagName: Et,
+  attributes: Wt,
+  children: qt
+}, Vt = [
   {
     narration: "Build the column widths for the table using the configured columns.",
     destinationPath: {
@@ -337,7 +356,7 @@ const xt = (e, a) => {
     templateKey: "buildHeader",
     func: "fromCollection"
   }
-], qt = [
+], zt = [
   {
     narration: "Build the table body rows for the table using the configured columns and data.",
     destinationPath: {
@@ -355,102 +374,317 @@ const xt = (e, a) => {
     },
     func: "twoDimensional"
   }
-], y = (e, a) => {
-  var t;
-  if (((t = e == null ? void 0 : e.attributes) == null ? void 0 : t["data-role"]) === a) return e;
-  for (const s of (e == null ? void 0 : e.children) ?? []) {
-    const o = y(s, a);
-    if (o) return o;
+], C = (t, a) => {
+  var e;
+  if (((e = t == null ? void 0 : t.attributes) == null ? void 0 : e["data-role"]) === a) return t;
+  for (const o of (t == null ? void 0 : t.children) ?? []) {
+    const s = C(o, a);
+    if (s) return s;
   }
   return null;
-}, Vt = (e, a) => {
-  const t = e[a.fileName], s = a.dataRole ? y(t, a.dataRole) : t;
-  return (a.filePath ?? []).reduce((o, n) => o[n], s);
-}, x = (e) => Array.isArray(e) ? e : [e], G = (e, a, t) => {
-  e[a] = t;
-}, zt = (e, a, t) => {
-  e[a].push(...x(t));
-}, Ht = (e, a, t) => {
-  e[a].unshift(...x(t));
-}, Gt = (e, a, t) => {
-  e[a].forEach((s) => {
-    s.children.push(...structuredClone(x(t)));
+}, Ht = (t, a) => {
+  const e = t[a.fileName], o = a.dataRole ? C(e, a.dataRole) : e;
+  return (a.filePath ?? []).reduce((s, n) => s[n], o);
+}, P = (t) => Array.isArray(t) ? t : [t], H = (t, a, e) => {
+  t[a] = e;
+}, Gt = (t, a, e) => {
+  t[a].push(...P(e));
+}, Mt = (t, a, e) => {
+  t[a].unshift(...P(e));
+}, Ut = (t, a, e) => {
+  t[a].forEach((o) => {
+    o.children.push(...structuredClone(P(e)));
   });
-}, Ut = (e, a, t) => {
-  e[a].forEach((s) => {
-    s.children.unshift(...structuredClone(x(t)));
+}, Jt = (t, a, e) => {
+  t[a].forEach((o) => {
+    o.children.unshift(...structuredClone(P(e)));
   });
-}, Mt = (e, a, t) => {
-  e[a].forEach((s, o) => {
-    const n = structuredClone(t);
-    n.textContent = o + 1, s.children.unshift(n);
+}, _t = (t, a, e) => {
+  t[a].forEach((o, s) => {
+    const n = structuredClone(e);
+    n.textContent = s + 1, o.children.unshift(n);
   });
-}, Jt = {
-  set: G,
-  push: zt,
-  unshift: Ht,
-  pushToRows: Gt,
-  unshiftToRows: Ut,
-  unshiftSerialToRows: Mt
-}, _t = (e, a) => {
-  const t = a.dataRole ? y(e[a.fileName], a.dataRole) : e[a.fileName], s = [...a.filePath ?? []], o = s.pop();
-  return { parent: s.reduce((r, i) => r[i], t), key: o };
-}, U = (e, a, t) => {
-  const { parent: s, key: o } = _t(e, a);
-  (Jt[a.action] || G)(s, o, t);
-}, Qt = (e, a, t) => {
-  var n, r;
-  const s = !!((n = e.sourcePath) != null && n.fileName && Array.isArray((r = e.sourcePath) == null ? void 0 : r.filePath)), o = `structure/sourcePath: ${s ? "passed" : "failed"}`;
-  return t.push(o), a && console.log(o), s;
-}, Xt = (e, a, t) => {
-  var n, r;
-  const s = !!((n = e.destinationPath) != null && n.fileName && Array.isArray((r = e.destinationPath) == null ? void 0 : r.filePath)), o = `structure/destinationPath: ${s ? "passed" : "failed"}`;
-  return t.push(o), a && console.log(o), s;
-}, Yt = (e, a, t) => {
-  const s = e.templateKey === void 0 || typeof e.templateKey == "string" && e.templateKey.length > 0, o = `structure/templateKey: ${s ? "passed" : "failed"}`;
-  return t.push(o), a && console.log(o), s;
-}, Zt = (e, a, t) => {
-  const s = typeof e.func == "string" && e.func.length > 0, o = `structure/func: ${s ? "passed" : "failed"}`;
-  return t.push(o), a && console.log(o), s;
-}, te = (e, a, t) => [
-  Qt(e, a, t),
-  Xt(e, a, t),
-  Yt(e, a, t),
-  Zt(e, a, t)
-].every(Boolean), ee = (e, a, t, s) => {
-  const o = typeof a[e.func] == "function", n = `references/func (${e.func}): ${o ? "passed" : "failed"}`;
-  return s.push(n), t && console.log(n), o;
-}, ae = (e, a, t, s) => {
-  const o = e.templateKey === void 0 || Object.hasOwn(a, e.templateKey), n = `references/templateKey${e.templateKey === void 0 ? " (not used)" : ` (${e.templateKey})`}: ${o ? "passed" : "failed"}`;
-  return s.push(n), t && console.log(n), o;
-}, se = (e, a, t, s, o) => {
-  const n = ee(e, a, s, o), r = ae(e, t, s, o);
-  return n && r;
-}, M = (e, a, t, s, o) => te(e, s, o) ? se(e, a, t, s, o) : !1, oe = (e, a, t, s, o, n) => {
-  if (!M(e, t, s, o, n)) return;
-  const r = s, i = e.templateKey, u = r[i];
-  console.log("templateKey ; ", i), console.log("localSpecKey ; ", u);
-  const d = Vt(a, e.sourcePath), l = t[e.func](d, u);
-  i === "buildFooter" && console.log("result ; ", l), U(a, e.destinationPath, l);
-}, F = (e, a, t, s, o, n) => {
-  e.forEach((r) => {
-    oe(r, a, t, s, o, n);
+}, Qt = {
+  set: H,
+  push: Gt,
+  unshift: Mt,
+  pushToRows: Ut,
+  unshiftToRows: Jt,
+  unshiftSerialToRows: _t
+}, Xt = (t, a) => {
+  const e = a.dataRole ? C(t[a.fileName], a.dataRole) : t[a.fileName], o = [...a.filePath ?? []], s = o.pop();
+  return { parent: o.reduce((l, r) => l[r], e), key: s };
+}, G = (t, a, e) => {
+  const { parent: o, key: s } = Xt(t, a);
+  (Qt[a.action] || H)(o, s, e);
+}, Yt = (t, a, e) => {
+  var n, l;
+  const o = !!((n = t.sourcePath) != null && n.fileName && Array.isArray((l = t.sourcePath) == null ? void 0 : l.filePath)), s = `structure/sourcePath: ${o ? "passed" : "failed"}`;
+  return e.push(s), a && console.log(s), o;
+}, Zt = (t, a, e) => {
+  var n, l;
+  const o = !!((n = t.destinationPath) != null && n.fileName && Array.isArray((l = t.destinationPath) == null ? void 0 : l.filePath)), s = `structure/destinationPath: ${o ? "passed" : "failed"}`;
+  return e.push(s), a && console.log(s), o;
+}, te = (t, a, e) => {
+  const o = t.templateKey === void 0 || typeof t.templateKey == "string" && t.templateKey.length > 0, s = `structure/templateKey: ${o ? "passed" : "failed"}`;
+  return e.push(s), a && console.log(s), o;
+}, ee = (t, a, e) => {
+  const o = typeof t.func == "string" && t.func.length > 0, s = `structure/func: ${o ? "passed" : "failed"}`;
+  return e.push(s), a && console.log(s), o;
+}, ae = (t, a, e) => [
+  Yt(t, a, e),
+  Zt(t, a, e),
+  te(t, a, e),
+  ee(t, a, e)
+].every(Boolean), oe = (t, a, e, o) => {
+  const s = typeof a[t.func] == "function", n = `references/func (${t.func}): ${s ? "passed" : "failed"}`;
+  return o.push(n), e && console.log(n), s;
+}, se = (t, a, e, o) => {
+  const s = t.templateKey === void 0 || Object.hasOwn(a, t.templateKey), n = `references/templateKey${t.templateKey === void 0 ? " (not used)" : ` (${t.templateKey})`}: ${s ? "passed" : "failed"}`;
+  return o.push(n), e && console.log(n), s;
+}, ne = (t, a, e, o, s) => {
+  const n = oe(t, a, o, s), l = se(t, e, o, s);
+  return n && l;
+}, M = (t, a, e, o, s) => ae(t, o, s) ? ne(t, a, e, o, s) : !1, le = (t, a, e, o, s, n) => {
+  if (!M(t, e, o, s, n)) return;
+  const l = o, r = t.templateKey, i = l[r];
+  console.log("templateKey ; ", r), console.log("localSpecKey ; ", i);
+  const b = Ht(a, t.sourcePath), c = e[t.func](b, i);
+  r === "buildFooter" && console.log("result ; ", c), G(a, t.destinationPath, c);
+}, f = (t, a, e, o, s, n) => {
+  t.forEach((l) => {
+    le(l, a, e, o, s, n);
   });
-}, ne = (e, a, t, s, o, n) => {
-  if (!M(e, t, s, o, n)) return;
-  const r = t[e.func](
+}, re = (t, a, e, o, s, n) => {
+  if (!M(t, e, o, s, n)) return;
+  const l = e[t.func](
     a.data.columns,
     a.data.data,
-    s
+    o
   );
-  U(a, e.destinationPath, r);
-}, R = (e, a, t, s, o, n) => {
-  e.forEach((r) => {
-    ne(r, a, t, s, o, n);
+  G(a, t.destinationPath, l);
+}, k = (t, a, e, o, s, n) => {
+  t.forEach((l) => {
+    re(l, a, e, o, s, n);
   });
-}, T = { data: {}, base: H, spec: b }, j = { fromCollection: m, twoDimensional: C }, re = (e, a = !1, t = []) => (T.data = e, F(Wt, T, j, b, a, t), R(qt, T, j, b, a, t), H), le = "table", ie = {
+}, ie = [
+  {
+    narration: "Prepend the serial column width to the table colgroup.",
+    destinationPath: {
+      fileName: "base",
+      dataRole: "table-colgroup",
+      filePath: [
+        "children"
+      ],
+      action: "unshift"
+    },
+    sourcePath: {
+      fileName: "data",
+      filePath: [
+        "serial",
+        "col"
+      ]
+    },
+    templateKey: "buildColGroup",
+    func: "applyTemplate"
+  },
+  {
+    narration: "Prepend the serial header cell to the table header row.",
+    destinationPath: {
+      fileName: "base",
+      dataRole: "table-header-row",
+      filePath: [
+        "children"
+      ],
+      action: "unshift"
+    },
+    sourcePath: {
+      fileName: "data",
+      filePath: [
+        "serial",
+        "header"
+      ]
+    },
+    templateKey: "buildHeader",
+    func: "applyTemplate"
+  },
+  {
+    narration: "Prepend the serial number cell into each table body row.",
+    destinationPath: {
+      fileName: "base",
+      dataRole: "table-body",
+      filePath: [
+        "children"
+      ],
+      action: "unshiftSerialToRows"
+    },
+    sourcePath: {
+      fileName: "data",
+      filePath: [
+        "serial",
+        "body"
+      ]
+    },
+    templateKey: "buildBodyCell",
+    func: "applyTemplate"
+  }
+], ce = [
+  {
+    narration: "Prepend an empty cell into the table footer row if footer row is present.",
+    destinationPath: {
+      fileName: "base",
+      dataRole: "table-footer-row",
+      filePath: [
+        "children"
+      ],
+      action: "unshift"
+    },
+    sourcePath: {
+      fileName: "data",
+      filePath: [
+        "serial",
+        "footer"
+      ]
+    },
+    templateKey: "emptyCell",
+    func: "applyTemplate"
+  }
+], A = { applyTemplate: p }, ue = (t = {}, a = {}, e = !1, o = []) => {
+  let s = t, n = a;
+  t && typeof t == "object" && "inTableSpec" in t && (s = t.inTableSpec, n = t.inSerial || a);
+  const r = {
+    data: {
+      serial: {
+        col: { width: "50px" },
+        header: { columnName: "#" },
+        body: {},
+        footer: {},
+        ...n
+      }
+    },
+    base: s,
+    spec: u
+  };
+  f(ie, r, A, u, e, o);
+  const i = C(s, "table-footer-row");
+  return i && Array.isArray(i.children) && i.children.length > 0 && f(ce, r, A, u, e, o), s;
+}, de = [
+  {
+    narration: "Append the options column width to the table colgroup.",
+    destinationPath: {
+      fileName: "base",
+      dataRole: "table-colgroup",
+      filePath: [
+        "children"
+      ],
+      action: "push"
+    },
+    sourcePath: {
+      fileName: "data",
+      filePath: [
+        "options",
+        "col"
+      ]
+    },
+    templateKey: "buildColGroup",
+    func: "applyTemplate"
+  },
+  {
+    narration: "Append the options header cell to the table header row.",
+    destinationPath: {
+      fileName: "base",
+      dataRole: "table-header-row",
+      filePath: [
+        "children"
+      ],
+      action: "push"
+    },
+    sourcePath: {
+      fileName: "data",
+      filePath: [
+        "options",
+        "header"
+      ]
+    },
+    templateKey: "buildHeader",
+    func: "applyTemplate"
+  },
+  {
+    narration: "Append the options button cell into each table body row.",
+    destinationPath: {
+      fileName: "base",
+      dataRole: "table-body",
+      filePath: [
+        "children"
+      ],
+      action: "pushToRows"
+    },
+    sourcePath: {
+      fileName: "data",
+      filePath: [
+        "options",
+        "body"
+      ]
+    },
+    templateKey: "optionsButtonCell",
+    func: "applyTemplate"
+  }
+], be = [
+  {
+    narration: "Append an empty cell into the table footer row if footer row is present.",
+    destinationPath: {
+      fileName: "base",
+      dataRole: "table-footer-row",
+      filePath: [
+        "children"
+      ],
+      action: "push"
+    },
+    sourcePath: {
+      fileName: "data",
+      filePath: [
+        "options",
+        "footer"
+      ]
+    },
+    templateKey: "emptyCell",
+    func: "applyTemplate"
+  }
+], v = { applyTemplate: p }, pe = (t = {}, a = {}, e = !1, o = []) => {
+  let s = t, n = a;
+  t && typeof t == "object" && "inTableSpec" in t && (s = t.inTableSpec, n = t.inOptions || a);
+  const r = {
+    data: {
+      options: {
+        col: { width: "100px" },
+        header: { columnName: "options" },
+        body: { columnName: "show" },
+        footer: {},
+        ...n
+      }
+    },
+    base: s,
+    spec: u
+  };
+  f(de, r, v, u, e, o);
+  const i = C(s, "table-footer-row");
+  return i && Array.isArray(i.children) && i.children.length > 0 && f(be, r, v, u, e, o), s;
+}, U = ({ inOptions: t = {}, inBase: a, showLog: e = !1, returnLog: o = [] }) => {
+  const s = t, n = a;
+  return (s.showSerial || s.serial) && ue(n, s.serial || {}, e, o), (s.showOptions || s.options) && pe(n, s.options || {}, e, o), n;
+}, j = { fromCollection: m, twoDimensional: g }, me = (t = {}, a = !1, e = []) => {
+  const o = t, s = o.columns || [], n = o.data || [], l = o.options, r = structuredClone(Lt), i = {
+    data: {
+      columns: s,
+      data: n
+    },
+    base: r,
+    spec: u
+  };
+  return f(Vt, i, j, u, a, e), k(zt, i, j, u, a, e), U({ inOptions: l, inBase: r }), r;
+}, he = "table", fe = {
   class: "table table-hover table-striped align-middle border mb-0"
-}, ce = [
+}, ye = [
   {
     tagName: "colgroup",
     attributes: {
@@ -497,10 +731,10 @@ const xt = (e, a) => {
     ]
   }
 ], J = {
-  tagName: le,
-  attributes: ie,
-  children: ce
-}, ue = [
+  tagName: he,
+  attributes: fe,
+  children: ye
+}, Ce = [
   {
     narration: "Build the column widths for the table using the configured columns.",
     destinationPath: {
@@ -537,9 +771,9 @@ const xt = (e, a) => {
     templateKey: "buildHeader",
     func: "fromCollection"
   }
-], S = { data: {}, base: J, spec: b }, de = { fromCollection: m }, be = (e, a = !1, t = []) => (S.data = e, F(ue, S, de, b, a, t), J), me = [], _ = {
-  children: me
-}, pe = [
+], S = { data: {}, base: J, spec: u }, $e = { fromCollection: m }, ge = (t, a = !1, e = []) => (S.data = t, f(Ce, S, $e, u, a, e), J), we = [], _ = {
+  children: we
+}, Ne = [
   {
     narration: "Build the table body rows for the table using the configured columns and data.",
     destinationPath: {
@@ -556,9 +790,9 @@ const xt = (e, a) => {
     },
     func: "twoDimensional"
   }
-], E = { data: {}, base: _, spec: b }, he = { twoDimensional: C }, fe = (e, a = !1, t = []) => (E.data = e, R(pe, E, he, b, a, t), _.children), ye = "table", $e = {
+], O = { data: {}, base: _, spec: u }, xe = { twoDimensional: g }, Pe = (t, a = !1, e = []) => (O.data = t, k(Ne, O, xe, u, a, e), _.children), Te = "table", Fe = {
   class: "table table-hover table-striped align-middle border mb-0"
-}, Ce = [
+}, Be = [
   {
     tagName: "colgroup",
     attributes: {
@@ -604,11 +838,11 @@ const xt = (e, a) => {
       }
     ]
   }
-], Q = {
-  tagName: ye,
-  attributes: $e,
-  children: Ce
-}, ge = [
+], Ie = {
+  tagName: Te,
+  attributes: Fe,
+  children: Be
+}, ke = [
   {
     narration: "Build the column widths for the table using the configured columns.",
     destinationPath: {
@@ -663,7 +897,7 @@ const xt = (e, a) => {
     templateKey: "buildFooter",
     func: "fromCollection"
   }
-], we = [
+], Re = [
   {
     narration: "Build the table body rows for the table using the configured columns and data.",
     destinationPath: {
@@ -681,9 +915,19 @@ const xt = (e, a) => {
     },
     func: "twoDimensional"
   }
-], I = { data: {}, base: Q, spec: b }, D = { fromCollection: m, twoDimensional: C }, Ne = (e, a = !1, t = []) => (I.data = e, F(ge, I, D, b, a, t), R(we, I, D, b, a, t), Q), xe = [], w = {
-  children: xe
-}, Fe = [
+], K = { fromCollection: m, twoDimensional: g }, Ae = (t = {}, a = !1, e = []) => {
+  const o = t, s = o.inColumns || o.columns || [], n = o.inData || o.data || [], l = o.inOptions || o.options || {}, r = structuredClone(Ie), i = {
+    data: {
+      columns: s,
+      data: n
+    },
+    base: r,
+    spec: u
+  };
+  return f(ke, i, K, u, a, e), k(Re, i, K, u, a, e), U({ inOptions: l, inBase: r }), r;
+}, ve = [], N = {
+  children: ve
+}, je = [
   {
     narration: "Build the footer row for the table using the configured columns.",
     destinationPath: {
@@ -701,115 +945,115 @@ const xt = (e, a) => {
     templateKey: "buildFooter",
     func: "fromCollection"
   }
-], K = { data: {}, base: w, spec: b }, ke = { fromCollection: m, twoDimensional: C }, Te = (e, a = !1, t = []) => (K.data = e, F(Fe, K, ke, b, a, t), w == null ? void 0 : w.children), Ie = {
-  simple: re,
-  headerOnly: be,
-  bodyOnly: fe,
-  withFooter: Ne,
-  footerOnly: Te
-}, O = ({
-  inData: e,
+], D = { data: {}, base: N, spec: u }, Se = { fromCollection: m, twoDimensional: g }, Oe = (t, a = !1, e = []) => (D.data = t, f(je, D, Se, u, a, e), N == null ? void 0 : N.children), Ke = {
+  simple: me,
+  headerOnly: ge,
+  bodyOnly: Pe,
+  withFooter: Ae,
+  footerOnly: Oe
+}, E = ({
+  inData: t,
   inColumns: a,
-  inType: t,
-  footer: s = [],
-  options: o,
+  inType: e,
+  footer: o = [],
+  options: s,
   inShowLog: n
 } = {}) => {
-  const i = Ie[t];
-  return i({
+  const r = Ke[e];
+  return r({
     columns: a,
-    data: e,
+    data: t,
     showLog: n
   });
-}, Be = ({ inData: e = [], inColumns: a = [] } = {}) => ({
-  data: e,
+}, De = ({ inData: t = [], inColumns: a = [] } = {}) => ({
+  data: t,
   columns: a
-}), Pe = {
+}), Ee = {
   tagName: "option",
   textContent: "${rowValue}",
   attributes: {
     value: "${rowValue}"
   }
-}, Ae = {
+}, We = {
   tagName: "select",
   attributes: {
     id: "LedgerName"
   },
   children: []
-}, Re = {
+}, qe = {
   tagName: "datalist",
   attributes: {
     "data-name": "${columnName}"
   },
   children: []
-}, h = {
-  buildOption: Pe,
-  buildSelect: Ae,
-  buildDataList: Re
-}, ve = (e, a = h.buildOption) => {
-  const t = structuredClone(a);
-  return t.textContent = t.textContent.replace("rowValue", e), t.attributes.value = t.attributes.value.replace("rowValue", e), t;
-}, je = (e, a) => {
-  const t = a == null ? void 0 : a.columnName, s = structuredClone(h.buildSelect);
-  s.attributes.id = t, s.attributes["data-name"] = t;
-  const o = ve(t, h.buildOption);
-  return s.children = m(e, o), s;
-}, Se = ({ data: e, columns: a }) => a.map((t) => je(e, t)), Ee = (e = {}) => {
-  const { data: a, columns: t } = Be(e);
-  return Se({ data: a, columns: t });
-}, De = ({ inData: e = [], inColumns: a = [] } = {}) => ({
-  data: e,
+}, y = {
+  buildOption: Ee,
+  buildSelect: We,
+  buildDataList: qe
+}, Le = (t, a = y.buildOption) => {
+  const e = structuredClone(a);
+  return e.textContent = e.textContent.replace("rowValue", t), e.attributes.value = e.attributes.value.replace("rowValue", t), e;
+}, Ve = (t, a) => {
+  const e = a == null ? void 0 : a.columnName, o = structuredClone(y.buildSelect);
+  o.attributes.id = e, o.attributes["data-name"] = e;
+  const s = Le(e, y.buildOption);
+  return o.children = m(t, s), o;
+}, ze = ({ data: t, columns: a }) => a.map((e) => Ve(t, e)), He = (t = {}) => {
+  const { data: a, columns: e } = De(t);
+  return ze({ data: a, columns: e });
+}, Ge = ({ inData: t = [], inColumns: a = [] } = {}) => ({
+  data: t,
   columns: a
-}), Ke = (e, a = h.buildOption) => {
-  const t = structuredClone(a);
-  return t.textContent = t.textContent.replace("rowValue", e), t.attributes.value = t.attributes.value.replace("rowValue", e), t;
-}, Oe = (e, a) => {
-  const t = a == null ? void 0 : a.columnName, s = Ke(t, h.buildOption);
-  return m(e, s);
-}, Le = ({ data: e, columns: a }) => a.map((t) => Oe(e, t)), We = (e = {}) => {
-  const { data: a, columns: t } = De(e);
-  return Le({ data: a, columns: t });
-}, qe = ({ inData: e = [], inColumns: a = [] } = {}) => ({
-  data: e,
+}), Me = (t, a = y.buildOption) => {
+  const e = structuredClone(a);
+  return e.textContent = e.textContent.replace("rowValue", t), e.attributes.value = e.attributes.value.replace("rowValue", t), e;
+}, Ue = (t, a) => {
+  const e = a == null ? void 0 : a.columnName, o = Me(e, y.buildOption);
+  return m(t, o);
+}, Je = ({ data: t, columns: a }) => a.map((e) => Ue(t, e)), _e = (t = {}) => {
+  const { data: a, columns: e } = Ge(t);
+  return Je({ data: a, columns: e });
+}, Qe = ({ inData: t = [], inColumns: a = [] } = {}) => ({
+  data: t,
   columns: a
-}), Ve = (e, a = h.buildOption) => {
-  const t = structuredClone(a);
-  return t.textContent = t.textContent.replace("rowValue", e), t.attributes.value = t.attributes.value.replace("rowValue", e), t;
-}, ze = (e, a) => {
-  const t = a == null ? void 0 : a.columnName, s = structuredClone(h.buildDataList);
-  s.attributes.id = t, s.attributes["data-name"] = t;
-  const o = Ve(t, h.buildOption);
-  return s.children = m(e, o), s;
-}, He = ({ data: e, columns: a }) => a.map((t) => ze(e, t)), L = (e = {}) => {
-  const { data: a, columns: t } = qe(e);
-  return He({ data: a, columns: t });
-}, Ge = {
+}), Xe = (t, a = y.buildOption) => {
+  const e = structuredClone(a);
+  return e.textContent = e.textContent.replace("rowValue", t), e.attributes.value = e.attributes.value.replace("rowValue", t), e;
+}, Ye = (t, a) => {
+  const e = a == null ? void 0 : a.columnName, o = structuredClone(y.buildDataList);
+  o.attributes.id = e, o.attributes["data-name"] = e;
+  const s = Xe(e, y.buildOption);
+  return o.children = m(t, s), o;
+}, Ze = ({ data: t, columns: a }) => a.map((e) => Ye(t, e)), W = (t = {}) => {
+  const { data: a, columns: e } = Qe(t);
+  return Ze({ data: a, columns: e });
+}, ta = {
   version: "1.2.0",
   name: "json-renderers-build-input-row"
-}, Ue = (e) => {
-  const a = e;
+}, ea = (t) => {
+  const a = t;
   if (typeof globalThis > "u" || !a) return;
   globalThis.ks ?? (globalThis.ks = {});
-  const t = typeof a == "function" ? a : a.render;
+  const e = typeof a == "function" ? a : a.render;
   globalThis.ks.jsonRenderersBuildInputRow = {
-    meta: Ge,
-    render: t,
+    meta: ta,
+    render: e,
     ...typeof a == "object" ? a : {}
   };
-}, Me = "input", Je = {
+}, aa = "input", oa = {
   type: "search",
   placeholder: "Search...",
   class: "form-control",
   id: "searchInputId"
-}, _e = {
-  tagName: Me,
-  attributes: Je
-}, N = ({ inOptions: e = {}, options: a = {} } = {}) => {
-  const t = e && Object.keys(e).length > 0 ? e : a, s = structuredClone(_e);
-  return t.placeholder && (s.attributes.placeholder = t.placeholder), t.class && (s.attributes.class = t.class), t.id && (s.attributes.id = t.id), t.name && (s.attributes.name = t.name), t.type && (s.attributes.type = t.type), t.value && (s.attributes.value = t.value), s;
-}, Qe = "div", Xe = {
+}, sa = {
+  tagName: aa,
+  attributes: oa
+}, x = ({ inOptions: t = {}, options: a = {} } = {}) => {
+  const e = t && Object.keys(t).length > 0 ? t : a, o = structuredClone(sa);
+  return e.placeholder && (o.attributes.placeholder = e.placeholder), e.class && (o.attributes.class = e.class), e.id && (o.attributes.id = e.id), e.name && (o.attributes.name = e.name), e.type && (o.attributes.type = e.type), e.value && (o.attributes.value = e.value), o;
+}, na = "div", la = {
   class: "d-flex align-items-center gap-2"
-}, Ye = [
+}, ra = [
   {
     tagName: "label",
     textContent: "Search:",
@@ -827,16 +1071,16 @@ const xt = (e, a) => {
       id: "searchInputId"
     }
   }
-], Ze = {
-  tagName: Qe,
-  attributes: Xe,
-  children: Ye
-}, k = ({ inOptions: e = {}, options: a = {} } = {}) => {
-  const t = e && Object.keys(e).length > 0 ? e : a, s = structuredClone(Ze), o = s.children[0], n = s.children[1];
-  return t.label && (o.textContent = t.label), t.id && (o.attributes.for = t.id, n.attributes.id = t.id), t.placeholder && (n.attributes.placeholder = t.placeholder), t.class && (n.attributes.class = t.class), t.name && (n.attributes.name = t.name), t.type && (n.attributes.type = t.type), t.wrapperClass && (s.attributes.class = t.wrapperClass), t.labelClass && (o.attributes.class = t.labelClass), s;
-}, ta = "div", ea = {
+], ia = {
+  tagName: na,
+  attributes: la,
+  children: ra
+}, T = ({ inOptions: t = {}, options: a = {} } = {}) => {
+  const e = t && Object.keys(t).length > 0 ? t : a, o = structuredClone(ia), s = o.children[0], n = o.children[1];
+  return e.label && (s.textContent = e.label), e.id && (s.attributes.for = e.id, n.attributes.id = e.id), e.placeholder && (n.attributes.placeholder = e.placeholder), e.class && (n.attributes.class = e.class), e.name && (n.attributes.name = e.name), e.type && (n.attributes.type = e.type), e.wrapperClass && (o.attributes.class = e.wrapperClass), e.labelClass && (s.attributes.class = e.labelClass), o;
+}, ca = "div", ua = {
   class: "d-flex align-items-center gap-2"
-}, aa = [
+}, da = [
   {
     tagName: "label",
     textContent: "Search:",
@@ -863,45 +1107,45 @@ const xt = (e, a) => {
       id: "searchButtonId"
     }
   }
-], sa = {
-  tagName: ta,
-  attributes: ea,
-  children: aa
-}, v = ({ inOptions: e = {}, options: a = {} } = {}) => {
-  const t = e && Object.keys(e).length > 0 ? e : a, s = structuredClone(sa), o = s.children[0], n = s.children[1], r = s.children[2];
-  return t.label && (o.textContent = t.label), t.id && (o.attributes.for = t.id, n.attributes.id = t.id), t.placeholder && (n.attributes.placeholder = t.placeholder), t.class && (n.attributes.class = t.class), t.name && (n.attributes.name = t.name), t.type && (n.attributes.type = t.type), t.buttonText && (r.textContent = t.buttonText), t.buttonClass && (r.attributes.class = t.buttonClass), t.buttonId && (r.attributes.id = t.buttonId), t.wrapperClass && (s.attributes.class = t.wrapperClass), t.labelClass && (o.attributes.class = t.labelClass), s;
-}, oa = {
-  input: N,
-  inputOnly: N,
-  inputWithLabel: k,
-  inputWithLabelButton: v
-}, na = ({
-  type: e = "inputWithLabel",
+], ba = {
+  tagName: ca,
+  attributes: ua,
+  children: da
+}, R = ({ inOptions: t = {}, options: a = {} } = {}) => {
+  const e = t && Object.keys(t).length > 0 ? t : a, o = structuredClone(ba), s = o.children[0], n = o.children[1], l = o.children[2];
+  return e.label && (s.textContent = e.label), e.id && (s.attributes.for = e.id, n.attributes.id = e.id), e.placeholder && (n.attributes.placeholder = e.placeholder), e.class && (n.attributes.class = e.class), e.name && (n.attributes.name = e.name), e.type && (n.attributes.type = e.type), e.buttonText && (l.textContent = e.buttonText), e.buttonClass && (l.attributes.class = e.buttonClass), e.buttonId && (l.attributes.id = e.buttonId), e.wrapperClass && (o.attributes.class = e.wrapperClass), e.labelClass && (s.attributes.class = e.labelClass), o;
+}, pa = {
+  input: x,
+  inputOnly: x,
+  inputWithLabel: T,
+  inputWithLabelButton: R
+}, ma = ({
+  type: t = "inputWithLabel",
   options: a = {},
-  inType: t,
-  inOptions: s
+  inType: e,
+  inOptions: o
 } = {}) => {
-  const o = t ?? e, n = s ?? a;
-  return (oa[o] || k)({ inOptions: n, options: n });
+  const s = e ?? t, n = o ?? a;
+  return (pa[s] || T)({ inOptions: n, options: n });
 };
-Ue({
-  render: na,
-  inputOnly: N,
-  inputWithLabel: k,
-  inputWithLabelButton: v
+ea({
+  render: ma,
+  inputOnly: x,
+  inputWithLabel: T,
+  inputWithLabelButton: R
 });
-const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
-  const t = e && Object.keys(e).length > 0 ? e : a;
-  return (t == null ? void 0 : t.label) === !1 || (t == null ? void 0 : t.flavour) === "inputOnly" ? N({ inOptions: t }) : (t == null ? void 0 : t.flavour) === "inputWithLabelButton" || t != null && t.button || t != null && t.buttonText ? v({ inOptions: t }) : k({ inOptions: t });
-}, ra = {
+const F = ({ inOptions: t = {}, options: a = {} } = {}) => {
+  const e = t && Object.keys(t).length > 0 ? t : a;
+  return (e == null ? void 0 : e.label) === !1 || (e == null ? void 0 : e.flavour) === "inputOnly" ? x({ inOptions: e }) : (e == null ? void 0 : e.flavour) === "inputWithLabelButton" || e != null && e.button || e != null && e.buttonText ? R({ inOptions: e }) : T({ inOptions: e });
+}, ha = {
   version: "1.2.0",
   name: "json-renderers-build-form"
-}, la = (e) => {
-  typeof globalThis > "u" || !e || (globalThis.ks ?? (globalThis.ks = {}), globalThis.ks.jsonRenderersBuildForm = { meta: ra, render: e });
-}, ia = "div", ca = {
+}, fa = (t) => {
+  typeof globalThis > "u" || !t || (globalThis.ks ?? (globalThis.ks = {}), globalThis.ks.jsonRenderersBuildForm = { meta: ha, render: t });
+}, ya = "div", Ca = {
   class: "${cardClass}",
   "data-role": "form-card"
-}, ua = [
+}, $a = [
   {
     tagName: "header",
     attributes: {
@@ -982,14 +1226,14 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       }
     ]
   }
-], da = {
-  tagName: ia,
-  attributes: ca,
-  children: ua
-}, ba = () => structuredClone(da), ma = "header-actions", pa = "button", W = {
-  destinationRole: ma,
-  template: pa
-}, ha = {
+], ga = {
+  tagName: ya,
+  attributes: Ca,
+  children: $a
+}, wa = () => structuredClone(ga), Na = "header-actions", xa = "button", q = {
+  destinationRole: Na,
+  template: xa
+}, Pa = {
   tagName: "button",
   textContent: "${label}",
   attributes: {
@@ -997,20 +1241,20 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
     form: "${formId}",
     class: "${buttonClass} ${buttonSizeClass} ${buttonPaddingClass}"
   }
-}, fa = {
-  button: ha
-}, ya = (e, a) => {
-  const t = structuredClone(e), s = m(a.header.actions, fa[W.template]);
-  return y(t, W.destinationRole).children.push(...s), t;
-}, $a = "form-body", Ca = {
-  destinationRole: $a
-}, ga = {
+}, Ta = {
+  button: Pa
+}, Fa = (t, a) => {
+  const e = structuredClone(t), o = m(a.header.actions, Ta[q.template]);
+  return C(e, q.destinationRole).children.push(...o), e;
+}, Ba = "form-body", Ia = {
+  destinationRole: Ba
+}, ka = {
   tagName: "div",
   attributes: {
     class: "${rowClass}"
   },
   children: []
-}, wa = {
+}, Ra = {
   tagName: "div",
   attributes: {
     class: "${fieldClass}"
@@ -1036,7 +1280,7 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       }
     }
   ]
-}, Na = {
+}, Aa = {
   tagName: "div",
   attributes: {
     class: "${fieldClass}"
@@ -1063,7 +1307,7 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       }
     }
   ]
-}, xa = {
+}, va = {
   tagName: "div",
   attributes: {
     class: "${fieldClass}"
@@ -1089,7 +1333,7 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       }
     }
   ]
-}, Fa = {
+}, ja = {
   tagName: "div",
   attributes: {
     class: "${checkboxWrapperClass} ${fieldClass}"
@@ -1114,7 +1358,7 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       }
     }
   ]
-}, ka = {
+}, Sa = {
   tagName: "div",
   attributes: {
     class: "${fieldClass}"
@@ -1140,7 +1384,7 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       }
     }
   ]
-}, Ta = {
+}, Oa = {
   tagName: "div",
   attributes: {
     class: "${fieldClass}"
@@ -1167,7 +1411,7 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       }
     }
   ]
-}, Ia = {
+}, Ka = {
   tagName: "div",
   attributes: {
     class: "${fieldClass}"
@@ -1201,7 +1445,7 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       }
     }
   ]
-}, Ba = {
+}, Da = {
   tagName: "div",
   attributes: {
     class: "${fieldClass}"
@@ -1236,7 +1480,7 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       }
     }
   ]
-}, Pa = {
+}, Ea = {
   tagName: "div",
   attributes: {
     class: "${fieldClass}"
@@ -1262,7 +1506,7 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       }
     }
   ]
-}, Aa = {
+}, Wa = {
   tagName: "div",
   attributes: {
     class: "${inlineCheckboxWrapperClass}"
@@ -1287,43 +1531,43 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       }
     }
   ]
-}, Ra = {
-  buildBodyTr: ga,
-  buildBodyCell: wa,
-  buildRequiredField: Na,
-  buildTextareaField: xa,
-  buildCheckboxField: Fa,
-  buildInlineField: ka,
-  buildInlineRequiredField: Ta,
-  buildInlineFieldWithButton: Ia,
-  buildInlineRequiredFieldWithButton: Ba,
-  buildInlineTextareaField: Pa,
-  buildInlineCheckboxField: Aa
-}, va = (e, a, t) => {
-  const s = e.map((r) => {
-    var d, l, c, p, $;
-    const i = ((l = (d = r.template) == null ? void 0 : d.body) == null ? void 0 : l.cell) ?? (r.required ? "buildRequiredField" : "buildBodyCell");
-    let u = ((c = t.fieldTemplates) == null ? void 0 : c[i]) ?? i;
-    return r.buttonText && (u = ((p = t.buttonFieldTemplates) == null ? void 0 : p[u]) ?? u), {
-      ...r,
-      label: r.label ?? r.title ?? r.columnName,
-      type: r.type ?? "text",
-      placeholder: r.placeholder ?? "",
-      buttonType: r.buttonType ?? "button",
-      template: { ...r.template, body: { ...($ = r.template) == null ? void 0 : $.body, cell: u } }
+}, qa = {
+  buildBodyTr: ka,
+  buildBodyCell: Ra,
+  buildRequiredField: Aa,
+  buildTextareaField: va,
+  buildCheckboxField: ja,
+  buildInlineField: Sa,
+  buildInlineRequiredField: Oa,
+  buildInlineFieldWithButton: Ka,
+  buildInlineRequiredFieldWithButton: Da,
+  buildInlineTextareaField: Ea,
+  buildInlineCheckboxField: Wa
+}, La = (t, a, e) => {
+  const o = t.map((l) => {
+    var b, c, d, h, $;
+    const r = ((c = (b = l.template) == null ? void 0 : b.body) == null ? void 0 : c.cell) ?? (l.required ? "buildRequiredField" : "buildBodyCell");
+    let i = ((d = e.fieldTemplates) == null ? void 0 : d[r]) ?? r;
+    return l.buttonText && (i = ((h = e.buttonFieldTemplates) == null ? void 0 : h[i]) ?? i), {
+      ...l,
+      label: l.label ?? l.title ?? l.columnName,
+      type: l.type ?? "text",
+      placeholder: l.placeholder ?? "",
+      buttonType: l.buttonType ?? "button",
+      template: { ...l.template, body: { ...($ = l.template) == null ? void 0 : $.body, cell: i } }
     };
-  }), o = a[0] ?? {}, n = Object.fromEntries(s.map((r) => [
-    r.columnName,
-    o[r.columnName] ?? r.value ?? ""
+  }), s = a[0] ?? {}, n = Object.fromEntries(o.map((l) => [
+    l.columnName,
+    s[l.columnName] ?? l.value ?? ""
   ]));
-  return { columns: s, rows: [n] };
-}, ja = (e, a, t) => {
-  const s = va(a.columns, a.records, t.body), o = C(s.columns, s.rows, Ra), n = structuredClone(e);
-  return y(n, Ca.destinationRole).children.push(...Array.isArray(o) ? o : [o]), n;
-}, Sa = "footer-actions", Ea = "button", q = {
-  destinationRole: Sa,
-  template: Ea
-}, Da = {
+  return { columns: o, rows: [n] };
+}, Va = (t, a, e) => {
+  const o = La(a.columns, a.records, e.body), s = g(o.columns, o.rows, qa), n = structuredClone(t);
+  return C(n, Ia.destinationRole).children.push(...Array.isArray(s) ? s : [s]), n;
+}, za = "footer-actions", Ha = "button", L = {
+  destinationRole: za,
+  template: Ha
+}, Ga = {
   tagName: "button",
   textContent: "${label}",
   attributes: {
@@ -1331,28 +1575,28 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
     form: "${formId}",
     class: "${buttonClass} ${buttonSizeClass} ${buttonPaddingClass}"
   }
-}, Ka = {
-  button: Da
-}, Oa = (e, a) => {
-  const t = structuredClone(e), s = m(a.footer.actions, Ka[q.template]);
-  return y(t, q.destinationRole).children.push(...s), t;
-}, X = ({ inColumns: e, inData: a, inOptions: t, columns: s, data: o, options: n } = {}) => ({
-  columns: Array.isArray(e) && e.length > 0 ? e : Array.isArray(s) ? s : [],
-  records: Array.isArray(a) && a.length > 0 ? a : Array.isArray(o) ? o : [],
-  options: t && Object.keys(t).length > 0 ? t : n ?? {}
-}), La = "bigButtonsForm", Wa = "Account details", qa = "Update your profile information.", Va = "", za = "label", Ha = "stacked", Ga = "saveCancel", Ua = {
-  formId: La,
-  title: Wa,
-  description: qa,
-  recordId: Va,
-  header: za,
-  body: Ha,
-  footer: Ga
 }, Ma = {
+  button: Ga
+}, Ua = (t, a) => {
+  const e = structuredClone(t), o = m(a.footer.actions, Ma[L.template]);
+  return C(e, L.destinationRole).children.push(...o), e;
+}, Q = ({ inColumns: t, inData: a, inOptions: e, columns: o, data: s, options: n } = {}) => ({
+  columns: Array.isArray(t) && t.length > 0 ? t : Array.isArray(o) ? o : [],
+  records: Array.isArray(a) && a.length > 0 ? a : Array.isArray(s) ? s : [],
+  options: e && Object.keys(e).length > 0 ? e : n ?? {}
+}), Ja = "bigButtonsForm", _a = "Account details", Qa = "Update your profile information.", Xa = "", Ya = "label", Za = "stacked", to = "saveCancel", eo = {
+  formId: Ja,
+  title: _a,
+  description: Qa,
+  recordId: Xa,
+  header: Ya,
+  body: Za,
+  footer: to
+}, ao = {
   actions: []
-}, Ja = {
+}, oo = {
   actions: []
-}, _a = {
+}, so = {
   actions: [
     {
       label: "Refresh",
@@ -1360,14 +1604,14 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       buttonClass: "${headerButtonClass}"
     }
   ]
-}, Qa = {
+}, no = {
   actions: []
-}, Xa = {
-  none: Ma,
-  label: Ja,
-  labelWithRefresh: _a,
-  labelWithId: Qa
-}, Ya = {
+}, lo = {
+  none: ao,
+  label: oo,
+  labelWithRefresh: so,
+  labelWithId: no
+}, ro = {
   fieldTemplates: {
     buildBodyCell: "buildInlineField",
     buildRequiredField: "buildInlineRequiredField",
@@ -1378,19 +1622,19 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
     buildInlineField: "buildInlineFieldWithButton",
     buildInlineRequiredField: "buildInlineRequiredFieldWithButton"
   }
-}, Za = {
+}, io = {
   fieldTemplates: {},
   buttonFieldTemplates: {}
-}, ts = {
+}, co = {
   fieldTemplates: {},
   buttonFieldTemplates: {}
-}, es = {
-  inline: Ya,
-  stacked: Za,
-  threeColumns: ts
-}, as = {
+}, uo = {
+  inline: ro,
+  stacked: io,
+  threeColumns: co
+}, bo = {
   actions: []
-}, ss = {
+}, po = {
   actions: [
     {
       label: "Save",
@@ -1403,7 +1647,7 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       buttonClass: "${secondaryButtonClass}"
     }
   ]
-}, os = {
+}, mo = {
   actions: [
     {
       label: "Edit",
@@ -1411,31 +1655,31 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       buttonClass: "${infoButtonClass}"
     }
   ]
-}, ns = {
-  none: as,
-  saveCancel: ss,
-  edit: os
-}, P = (e, a, t) => {
-  const s = e[a];
-  if (!s) throw new RangeError("Unknown bigButtons " + t + ": " + a);
-  return s;
-}, Y = (e) => {
-  if (typeof e != "object" || e === null || Array.isArray(e))
+}, ho = {
+  none: bo,
+  saveCancel: po,
+  edit: mo
+}, B = (t, a, e) => {
+  const o = t[a];
+  if (!o) throw new RangeError("Unknown bigButtons " + e + ": " + a);
+  return o;
+}, X = (t) => {
+  if (typeof t != "object" || t === null || Array.isArray(t))
     throw new TypeError("bigButtons options must be an object keyed by renderer type");
-  const a = e["form.bigButtons"] ?? {};
+  const a = t["form.bigButtons"] ?? {};
   if (typeof a != "object" || a === null || Array.isArray(a))
     throw new TypeError('options["form.bigButtons"] must be an object');
-  const t = { ...Ua, ...a };
+  const e = { ...eo, ...a };
   return {
-    options: t,
-    header: P(Xa, t.header, "header"),
-    body: P(es, t.body, "body"),
-    footer: P(ns, t.footer, "footer")
+    options: e,
+    header: B(lo, e.header, "header"),
+    body: B(uo, e.body, "body"),
+    footer: B(ho, e.footer, "footer")
   };
-}, rs = (e, a = {}) => {
-  const t = X(a), s = Y(t.options), o = ya(e, s), n = ja(o, t, s);
-  return Oa(n, s);
-}, ls = {
+}, fo = (t, a = {}) => {
+  const e = Q(a), o = X(e.options), s = Fa(t, o), n = Va(s, e, o);
+  return Ua(n, o);
+}, yo = {
   none: {
     headerClass: "d-none",
     headerActionsClass: "d-none"
@@ -1467,14 +1711,14 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
     headerActionsClass: "d-none",
     headerButtonClass: "btn btn-outline-secondary text-nowrap"
   }
-}, is = {
-  bootstrap: ls
-}, cs = (e, a) => {
-  var s;
-  const t = (s = is[a]) == null ? void 0 : s[e.header];
-  if (!t) throw new RangeError("Unknown bigButtons header: " + e.header);
-  return t;
-}, us = "bootstrap", ds = {
+}, Co = {
+  bootstrap: yo
+}, $o = (t, a) => {
+  var o;
+  const e = (o = Co[a]) == null ? void 0 : o[t.header];
+  if (!e) throw new RangeError("Unknown bigButtons header: " + t.header);
+  return e;
+}, go = "bootstrap", wo = {
   bootstrap: {
     base: {
       cardClass: "card border-0 shadow-sm w-100",
@@ -1504,16 +1748,16 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
       }
     }
   }
-}, A = {
-  defaultFramework: us,
-  frameworks: ds
-}, bs = (e, a) => {
-  const t = A.frameworks[a];
-  if (!t) throw new RangeError("Unknown bigButtons framework: " + a);
-  const s = t.bodies[e.body];
-  if (!s) throw new RangeError("Unknown bigButtons body: " + e.body);
-  return { ...t.base, ...s };
-}, ms = {
+}, I = {
+  defaultFramework: go,
+  frameworks: wo
+}, No = (t, a) => {
+  const e = I.frameworks[a];
+  if (!e) throw new RangeError("Unknown bigButtons framework: " + a);
+  const o = e.bodies[t.body];
+  if (!o) throw new RangeError("Unknown bigButtons body: " + t.body);
+  return { ...e.base, ...o };
+}, xo = {
   base: {
     footerClass: "card-footer bg-transparent",
     footerActionsClass: "d-flex flex-wrap justify-content-end gap-2",
@@ -1531,74 +1775,74 @@ const B = ({ inOptions: e = {}, options: a = {} } = {}) => {
     saveCancel: {},
     edit: {}
   }
-}, ps = {
-  bootstrap: ms
-}, hs = (e, a) => {
-  const t = ps[a], s = t == null ? void 0 : t.footers[e.footer];
-  if (!t) throw new RangeError("Unknown bigButtons framework: " + a);
-  if (!s) throw new RangeError("Unknown bigButtons footer: " + e.footer);
-  return { ...t.base, ...s };
-}, fs = (e, a = {}) => {
-  const t = Y(X(a).options), { options: s } = t, o = s.framework ?? A.defaultFramework;
-  if (!A.frameworks[o]) throw new RangeError("Unknown bigButtons framework: " + o);
-  const r = Object.assign(
+}, Po = {
+  bootstrap: xo
+}, To = (t, a) => {
+  const e = Po[a], o = e == null ? void 0 : e.footers[t.footer];
+  if (!e) throw new RangeError("Unknown bigButtons framework: " + a);
+  if (!o) throw new RangeError("Unknown bigButtons footer: " + t.footer);
+  return { ...e.base, ...o };
+}, Fo = (t, a = {}) => {
+  const e = X(Q(a).options), { options: o } = e, s = o.framework ?? I.defaultFramework;
+  if (!I.frameworks[s]) throw new RangeError("Unknown bigButtons framework: " + s);
+  const l = Object.assign(
     {},
-    s,
-    bs(s, o),
-    cs(s, o),
-    hs(s, o)
+    o,
+    No(o, s),
+    $o(o, s),
+    To(o, s)
   );
-  return f(r, structuredClone(e));
-}, ys = (e = {}) => {
-  const a = ba(), t = rs(a, e);
-  return fs(t, e);
-}, Z = (e = {}) => {
-  const a = { ...e, type: e.type ?? "form.bigButtons" };
-  return V(a), ys(a);
+  return p(l, structuredClone(t));
+}, Bo = (t = {}) => {
+  const a = wa(), e = fo(a, t);
+  return Fo(e, t);
+}, Y = (t = {}) => {
+  const a = { ...t, type: t.type ?? "form.bigButtons" };
+  return V(a), Bo(a);
 };
-la(Z);
-const $s = ({
-  inType: e = "stacked",
+fa(Y);
+const Io = ({
+  inType: t = "stacked",
   inData: a,
-  inColumns: t
-} = {}) => Z({
-  type: e,
-  columns: t,
+  inColumns: e
+} = {}) => Y({
+  type: t,
+  columns: e,
   data: a
-}), Cs = {
-  table: O,
-  tableFromSpec: O,
-  select: Ee,
-  selectOptionsOnly: We,
-  dataList: L,
-  datalist: L,
-  searchInput: B,
-  search: B,
-  inputRow: B,
-  form: $s
-}, gs = (e = {}) => {
-  V(e);
-  const a = e == null ? void 0 : e.showLog, t = e.type;
-  let s = t, o = t;
-  if (t.includes(".")) {
-    const i = t.split(".");
-    s = i[0], o = i[1];
+}), ko = {
+  table: E,
+  tableFromSpec: E,
+  select: He,
+  selectOptionsOnly: _e,
+  dataList: W,
+  datalist: W,
+  searchInput: F,
+  search: F,
+  inputRow: F,
+  form: Io
+}, Ro = (t = {}) => {
+  V(t);
+  const a = t == null ? void 0 : t.showLog, e = t.type;
+  let o = e, s = e;
+  if (e.includes(".")) {
+    const r = e.split(".");
+    o = r[0], s = r[1];
   }
-  const n = Cs[s];
+  const n = ko[o];
   if (!n)
-    throw new Error(`Renderer for type "${s}" not found.`);
-  const r = n({
-    inType: o,
-    inColumns: e.columns,
-    inData: e.data,
-    inOptions: e.options,
-    options: e.options,
+    throw new Error(`Renderer for type "${o}" not found.`);
+  const l = n({
+    inType: s,
+    inColumns: t.columns,
+    inData: t.data,
+    inOptions: t.options,
+    options: t.options,
     inShowLog: a
   });
-  return a && console.log("json-renderers-build output:", r), r;
+  return a && console.log("json-renderers-build output:", l), l;
 };
-st(gs);
+at(Ro);
 export {
-  gs as default,
-  gs as render
+  Ro as default,
+  Ro as render
 };
