@@ -1,19 +1,21 @@
-import { render as renderInputRow, inputOnly, inputWithLabel, inputWithLabelButton } from "json-renderers-build-input-row";
+import definitions from "../definitions.json" with { type: "json" };
 
-const renderSearchInput = ({ inOptions = {}, options = {} } = {}) => {
-    const localOptions = inOptions && Object.keys(inOptions).length > 0 ? inOptions : options;
+const render = ({ inOptions = {}, options = {} } = {}) => {
+    const opts = Object.keys(inOptions || {}).length > 0 ? inOptions : options;
+    const config = structuredClone(definitions.searchInput.base);
 
-    if (localOptions?.label === false || localOptions?.flavour === "inputOnly") {
-        return inputOnly({ inOptions: localOptions });
-    }
+    const label = opts.label ?? "Search:";
+    const placeholder = opts.placeholder ?? "Search...";
+    const id = opts.id ?? "searchInputId";
+    const className = opts.class ?? "form-control";
 
-    if (localOptions?.flavour === "inputWithLabelButton" || localOptions?.button || localOptions?.buttonText) {
-        return inputWithLabelButton({ inOptions: localOptions });
-    }
+    config.children[0].textContent = label;
+    config.children[0].attributes.for = id;
+    config.children[1].attributes.placeholder = placeholder;
+    config.children[1].attributes.id = id;
+    config.children[1].attributes.class = className;
 
-    return inputWithLabel({ inOptions: localOptions });
+    return config;
 };
 
-export { renderSearchInput, renderInputRow, inputOnly, inputWithLabel, inputWithLabelButton };
-export default renderSearchInput;
-
+export default render;

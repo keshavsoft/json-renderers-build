@@ -1,27 +1,36 @@
-import render from "../../../docs/dist/v24/min.js";
+import render from "../../../docs/dist/v27/min.js";
 import "https://keshavsoft.github.io/json-to-tag/dist/v9/min.js";
 
 const start = () => {
   try {
     const spec = render({
       type: "dataList",
-      columns: [{ columnName: "Name" }],
+      columns: [{ columnName: "CompanyList" }],
       data: [
-        { Name: "KeshavSoft" },
-        { Name: "India" },
-        { Name: "Crown Logistics" }
+        { CompanyList: "KeshavSoft Enterprise" },
+        { CompanyList: "KeshavSoft Analytics" },
+        { CompanyList: "Blue Valley Logistics" },
+        { CompanyList: "Apex Global Foods" },
+        { CompanyList: "Crown Dynamics Inc." },
+        { CompanyList: "Delta Instruments" }
       ]
     });
 
-    console.log("dataList spec:", spec);
+    console.log("DataList spec:", spec);
+
+    const specOutput = document.getElementById("spec-output");
+    if (specOutput) {
+      specOutput.textContent = JSON.stringify(spec, null, 2);
+    }
 
     const container = document.getElementById("dom-render-container");
     if (container) {
       const control = window.ks.jsonToTag.buildSpecElement(spec);
-      container.appendChild(...control);
+      const elements = Array.isArray(control) ? control : [control];
+      container.replaceChildren(...elements);
     }
   } catch (err) {
-    console.log("error:", err);
+    console.error("DataList render error:", err);
   }
 };
 

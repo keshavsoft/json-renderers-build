@@ -1,28 +1,34 @@
-import render from "../../../docs/dist/v24/min.js";
+import render from "../../../docs/dist/v27/min.js";
 import "https://keshavsoft.github.io/json-to-tag/dist/v9/min.js";
 
 const start = () => {
   try {
     const spec = render({
       type: "selectOptionsOnly",
-      columns: [{ columnName: "Name" }],
+      columns: [{ columnName: "Role" }],
       data: [
-        { Name: "KeshavSoft" },
-        { Name: "India" },
-        { Name: "Crown Logistics" }
+        { Role: "Lead Architect" },
+        { Role: "Senior Frontend Engineer" },
+        { Role: "Full Stack Developer" },
+        { Role: "DevOps Engineer" }
       ]
     });
 
-    console.log("dataList spec:", spec);
+    console.log("selectOptionsOnly spec:", spec);
+
+    const specOutput = document.getElementById("spec-output");
+    if (specOutput) {
+      specOutput.textContent = JSON.stringify(spec, null, 2);
+    }
 
     const container = document.getElementById("selectId");
     if (container) {
       const control = window.ks.jsonToTag.buildSpecElement(spec);
-      console.log(" control :", control);
-      container.prepend(...control);
+      const elements = Array.isArray(control) ? control : [control];
+      container.append(...elements);
     }
   } catch (err) {
-    console.log("error:", err);
+    console.error("selectOptionsOnly render error:", err);
   }
 };
 

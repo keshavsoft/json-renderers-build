@@ -1,15 +1,17 @@
-import render from "../../../src/index.js";
+import render from "../../../docs/dist/v27/min.js";
 import { buildSpecElement } from "https://keshavsoft.github.io/json-to-tag/dist/v9/min.js";
 
 const startFunc = () => {
   try {
     const searchControl = render({
       type: "searchInput",
+      columns: [],
+      data: [],
       options: {
-        label: "Search:",
-        placeholder: "Search items, batches, godowns...",
+        label: "Quick Search:",
+        placeholder: "Type keywords to filter records...",
         id: "searchInputId",
-        class: "form-control"
+        class: "form-control form-control-lg shadow-sm"
       }
     });
 

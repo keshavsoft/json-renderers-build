@@ -3,17 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Simple Table - V18</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <title>Simple Table - V27</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-  <main class="container py-4">
-    <div class="mb-3">
-      <h1 style="font-size:1.5rem" class="mb-1">Simple Table (V18)</h1>
-      <p class="text-muted small mb-0">Declarative table builder: columns drive <code>colgroup</code>, <code>thead</code>, and <code>tbody</code> from a single config.</p>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="../index.html">
+        <i class="bi bi-table me-2"></i>json-renderers-build <span class="badge bg-primary">v27</span>
+      </a>
+      <span class="navbar-text text-light">Simple Table Demo</span>
     </div>
-    <div id="dom-render-container"></div>
+  </nav>
+
+  <main class="container py-2">
+    <div class="card shadow-sm border-0 mb-4">
+      <div class="card-body p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <h1 class="h4 mb-1 fw-bold text-dark">Declarative Simple Table</h1>
+            <p class="text-muted small mb-0">Compiled 100% internally from <code>v27/definitions.json</code> using instruction-driven transforms.</p>
+          </div>
+          <a href="../index.html" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-arrow-left me-1"></i>All Samples
+          </a>
+        </div>
+        
+        <div id="dom-render-container" class="mt-4">
+          <div class="text-center py-5 text-muted">
+            <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
+            Building table...
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
+
   <script type="module" src="./index.js"></script>
 </body>
 </html>

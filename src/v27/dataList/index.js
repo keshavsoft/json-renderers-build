@@ -1,10 +1,23 @@
-import normalizeInputs from "./normalizeInputs.js";
-import buildDataListsForColumns from "./buildDataListsForColumns.js";
+import { fromCollection } from "json-transformer-funcs";
+import definitions from "../definitions.json" with { type: "json" };
 
-const startFunc = (options = {}) => {
-    const { data, columns } = normalizeInputs(options);
+const render = ({ inData = [], inColumns = [] } = {}) => {
+    const config = definitions.dataList;
+    return inColumns.map(columnConfig => {
+        const columnName = columnConfig?.columnName || "";
+        const dataList = structuredClone(config.base);
+        dataList.attributes.id = columnName;
+        dataList.attributes["data-name"] = columnName;
 
-    return buildDataListsForColumns({ data, columns });
+        const optionTemplate = {
+            tagName: "option",
+            textContent: `\${${columnName}}`,
+            attributes: { value: `\${${columnName}}` }
+        };
+
+        dataList.children = fromCollection(inData, optionTemplate);
+        return dataList;
+    });
 };
 
-export default startFunc;
+export default render;
