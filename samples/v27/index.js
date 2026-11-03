@@ -40,7 +40,48 @@ const initDashboard = () => {
     document.getElementById("demo-table-container").innerHTML = `<div class="alert alert-danger small">${err.message}</div>`;
   }
 
-  // 2. Render Select Component
+  // 2. Render Form Component
+  try {
+    const formSpec = render({
+      type: "form",
+      columns: [
+        { columnName: "fullName", type: "text", label: "Full Name", placeholder: "e.g. John Doe", required: true },
+        { columnName: "email", type: "email", label: "Email Address", placeholder: "john@example.com", required: true },
+        { columnName: "department", type: "select", label: "Department", options: ["Engineering", "Product", "Operations", "Sales"] },
+        { columnName: "active", type: "checkbox", label: "Active Team Member" }
+      ],
+      data: [{
+        fullName: "Ada Lovelace",
+        email: "ada@lovelace.org",
+        department: "Engineering",
+        active: true
+      }],
+      options: {
+        formId: "dashboard-form",
+        title: "Team Member Entry",
+        submitLabel: "Save Member"
+      }
+    });
+
+    const buildFunc = buildSpecElement || window.ks?.jsonToTag?.buildSpecElement;
+    if (buildFunc) {
+      const el = buildFunc(formSpec);
+      const container = document.getElementById("demo-form-container");
+      container.replaceChildren(el);
+
+      const realForm = el.querySelector("form") || el;
+      realForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Form submitted successfully! Check console for form data.");
+        console.log("Submitted form data:", Object.fromEntries(new FormData(realForm)));
+      });
+    }
+  } catch (err) {
+    console.error("Form render error:", err);
+    document.getElementById("demo-form-container").innerHTML = `<div class="alert alert-danger small">${err.message}</div>`;
+  }
+
+  // 3. Render Select Component
   try {
     const selectSpec = render({
       type: "select",
@@ -68,7 +109,7 @@ const initDashboard = () => {
     console.error("Select render error:", err);
   }
 
-  // 3. Render DataList Component
+  // 4. Render DataList Component
   try {
     const dataListSpec = render({
       type: "dataList",
@@ -86,7 +127,7 @@ const initDashboard = () => {
     console.error("DataList render error:", err);
   }
 
-  // 4. Render Search Input Component
+  // 5. Render Search Input Component
   try {
     const searchSpec = render({
       type: "searchInput",
@@ -112,4 +153,3 @@ const initDashboard = () => {
 };
 
 initDashboard();
-

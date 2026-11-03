@@ -13,11 +13,6 @@
     .demo-card:hover {
       box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08) !important;
     }
-    .badge-instruction {
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
   </style>
 </head>
 <body class="bg-light">
@@ -76,6 +71,9 @@
             <a href="./withSearch/index.html" class="btn btn-sm btn-outline-primary">
               <i class="bi bi-search me-1"></i>Table with Search
             </a>
+            <a href="./form/index.html" class="btn btn-sm btn-outline-danger">
+              <i class="bi bi-card-heading me-1"></i>Form Component
+            </a>
             <a href="./select/index.html" class="btn btn-sm btn-outline-success">
               <i class="bi bi-ui-checks me-1"></i>Select Dropdown
             </a>
@@ -96,22 +94,40 @@
     <!-- Live Rendered Grid -->
     <div class="row g-4">
       <!-- 1. Table Component -->
-      <div class="col-12 col-xl-8">
-        <div class="card demo-card border-0 shadow-sm h-100">
-          <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
-            <div>
-              <h2 class="h5 fw-bold mb-0 text-dark">
-                <i class="bi bi-table text-primary me-2"></i>Table Component (Simple with Serial)
-              </h2>
-              <span class="text-muted small">Type: <code>table.simple</code> | Local 2D instruction runner</span>
+      <div class="col-12 col-xl-7">
+        <div class="d-flex flex-column gap-4">
+          <!-- Table -->
+          <div class="card demo-card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+              <div>
+                <h2 class="h5 fw-bold mb-0 text-dark">
+                  <i class="bi bi-table text-primary me-2"></i>Table Component (Simple with Serial)
+                </h2>
+                <span class="text-muted small">Type: <code>table.simple</code> | Local 2D instruction runner</span>
+              </div>
+              <a href="./simpleTable/index.html" class="btn btn-outline-primary btn-sm">Full Page →</a>
             </div>
-            <a href="./simpleTable/index.html" class="btn btn-outline-primary btn-sm">Full Page →</a>
+            <div class="card-body p-4">
+              <div id="demo-table-container">
+                <div class="text-center py-4 text-muted">Rendering table...</div>
+              </div>
+            </div>
           </div>
-          <div class="card-body p-4">
-            <div id="demo-table-container">
-              <div class="text-center py-4 text-muted">
-                <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
-                Rendering table...
+
+          <!-- Form Component -->
+          <div class="card demo-card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+              <div>
+                <h2 class="h5 fw-bold mb-0 text-dark">
+                  <i class="bi bi-card-heading text-danger me-2"></i>Form Component (Self-Contained)
+                </h2>
+                <span class="text-muted small">Type: <code>form</code> | Zero external dependencies</span>
+              </div>
+              <a href="./form/index.html" class="btn btn-outline-danger btn-sm">Full Page →</a>
+            </div>
+            <div class="card-body p-4">
+              <div id="demo-form-container">
+                <div class="text-center py-4 text-muted">Rendering form...</div>
               </div>
             </div>
           </div>
@@ -119,8 +135,8 @@
       </div>
 
       <!-- 2. Select & Search Inputs Column -->
-      <div class="col-12 col-xl-4">
-        <div class="d-flex flex-column gap-4 h-100">
+      <div class="col-12 col-xl-5">
+        <div class="d-flex flex-column gap-4">
           <!-- Select Dropdown -->
           <div class="card demo-card border-0 shadow-sm">
             <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
@@ -179,4 +195,3 @@
   <script type="module" src="./index.js"></script>
 </body>
 </html>
-
