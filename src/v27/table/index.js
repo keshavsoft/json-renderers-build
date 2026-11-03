@@ -9,13 +9,13 @@ const render = ({
     inShowLog
 } = {}) => {
     const localType = inType;
-    const localBuildTableFunc = buildTable[localType];
     const localOptions = inOptions;
     const localShowLog = inShowLog;
 
     if (localShowLog) console.log("table : ", localType, localOptions);
 
-    const spec = localBuildTableFunc({
+    const spec = buildTable({
+        type: localType,
         columns: inColumns,
         data: inData,
         options: localOptions,
